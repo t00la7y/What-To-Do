@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="to-do-list" />
+    <meta name="author" content="Mpilo Shezi ( t00la7y )" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="to-do list, task manager, productivity, JavaScript, HTML, CSS"
+    />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="images/notepad.png" type="image/png" />
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>To-Do-List</title>
+  </head>
+  <body>
+    <main>
+      <section class="todo-app">
+        <h2>To-Do List <img src="images/icon.png" alt="icon"></h2>
+        <div class="row">
+          <input type="text" id="input-box" placeholder="Add your text" aria-label="task Input">
+          <button onclick="addTask()" aria-label="Add Task">Add</button>
+        </div>
+        <ul id="list-container"></ul>
+      </section>
+    </main>
+  </body>
+</html>
