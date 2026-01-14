@@ -9,6 +9,8 @@
       name="keywords"
       content="to-do list, task manager, productivity, JavaScript, HTML, CSS"
     />
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="icon" href="images/notepad.png" type="image/png" />
     <script src="main.js" defer></script>
@@ -22,6 +24,11 @@
         <div class="row">
           <input type="text" id="input-box" placeholder="Add your text" aria-label="task Input">
           <button onclick="addTask()" aria-label="Add Task">Add</button>
+        </div>
+        <div class="filter-list">
+          <span>Personal</span>
+          <span>Work</span>
+          <span>Home</span>
         </div>
         <ul id="list-container"></ul>
       </section>
