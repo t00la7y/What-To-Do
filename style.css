@@ -1,24 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root {
-  --primary-bg: hsl(0, 0%, 100%);    
-  --secondary-bg: hsl(220, 9%, 94%);    
-  --accent: hsl(6, 100%, 63%);   
-  --accent-hover: hsl(6, 74%, 55%);    
-  --text: hsl(0, 0%, 5%);    
-  --text-light: hsl(0, 0%, 33%);    
-  --gray-hover: hsl(0, 0%, 73%); 
+:root, :root.dark-mode.light-mode {
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+  --accent: hsl(6, 100%, 63%);
+  --accent-hover: hsl(6, 74%, 55%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --soft-indigo: hsl(249, 79%, 67%);
+  --blue: hsl(207, 92%, 46%);
+  --fresh-teal: hsl(167, 100%, 36%);
 }
 
-/* :root {
+:root.dark-mode {
   --primary-bg: hsl(0, 0%, 0%);
   --secondary-bg: hsl(220, 9%, 12%);
   --accent: hsl(6, 100%, 63%);    
   --accent-hover: hsl(6, 74%, 55%);    
   --text: hsl(0, 0%, 95%);    
   --text-light: hsl(0, 0%, 67%);
-  --gray-hover: hsl(0, 0%, 33%);   
-} */
+  --gray-hover: hsl(0, 0%, 33%); 
+  --soft-indigo: hsl(249, 79%, 67%);
+  --blue: hsl(207, 92%, 46%);
+  --fresh-teal: hsl(167, 100%, 36%); 
+}
 
 * {
   margin: 0;
@@ -55,6 +61,19 @@ body {
   margin-left: 0.625rem;
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
+  font-size: 2rem;
+  background-color: var(--primary-bg);
+  color: var(--text);
+}
+
 .row {
   display: flex;
   align-items: center;
@@ -65,22 +84,39 @@ body {
   margin-bottom: 1.5625rem;
 }
 
-.filter-list {
+.list-type {
   display: flex;
   flex-direction: row;
-  gap: 1.5rem;
-  padding-left: 3rem;
+  justify-content: space-around;
 }
 
-.filter-list span {
+.list-type .tag {
+  background-color: var(--secondary-bg);
+  color: var(--text);
+  border: 2px solid var(--secondary-bg);
   border-radius: 1.875rem;
-  padding: 0.2rem 1.25rem;
+  padding: 0.1rem 1.25rem;
   margin-bottom: 1.5625rem;
+  transition: all 0.3s ease;
 }
 
-.filter-list span:hover {
-  background-color: var(--accent);
+.list-type .tag:hover {
+  color: var(--accent);
+  border-color: var(--accent);
 }
+
+.list-type .tag-filter {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: var(--primary-bg);
+}
+
+.list-type .tag-filter:hover {
+  border-color: var(--accent-hover);
+  background-color: var(--accent);
+  color: var(--primary-bg);
+}
+
 input {
   flex: 1;
   border: none;
@@ -105,7 +141,7 @@ button:hover {
   transition: 0.3s ease;
 }
 
-ul li{
+ul li {
   color: var(--text);
   list-style: none;
   font-size: 1.0625rem;
@@ -129,9 +165,9 @@ ul li::before {
 }
 
 ul li.checked {
- color: var(--text-light);
- text-decoration: line-through;
- /* opacity: 0.8; */
+  color: var(--text-light);
+  text-decoration: line-through;
+  /* opacity: 0.8; */
 }
 
 ul li.checked::before {
@@ -152,5 +188,5 @@ ul li span {
 }
 
 ul li span:hover {
-  background-color: var(--gray-hover) ;
+  background-color: var(--gray-hover);
 }
