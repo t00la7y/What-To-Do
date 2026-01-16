@@ -19,7 +19,7 @@
   <main>
     <section class="todo-app">
       <div class="header">
-        <h2>To-Do List <img src="images/icon.png" alt="icon"></h2>
+        <h2>What-To-Do<img src="images/icon.png" alt="icon"></h2>
         <span class="material-symbols-outlined data-theme" id="theme-toggle" class="switch">
           table_lamp
         </span>
@@ -29,10 +29,15 @@
         <button onclick="addTask()" aria-label="Add Task">Add</button>
       </div>
       <div class="list-type">
+        <span class="tag">Untitled</span>
         <span class="tag">Personal</span>
         <span class="tag">Work</span>
-        <span class="tag">Home</span>
+        <span class="tag">Shared</span>
+        <span class="tag">Recent</span>
+        <span class="tag">Urgent</span>
+        <span class="add-tag">+</span>
       </div>
+      <hr>
       <ul id="list-container"></ul>
     </section>
   </main>
