@@ -29,16 +29,22 @@
         <button onclick="addTask()" aria-label="Add Task">Add</button>
       </div>
       <div class="list-type">
-        <span class="tag">Untitled</span>
-        <span class="tag">Personal</span>
-        <span class="tag">Work</span>
-        <span class="tag">Shared</span>
-        <span class="tag">Recent</span>
-        <span class="tag">Urgent</span>
+        <span class="tag" id="untitled">Untitled</span>
+        <span class="tag" id="personal">Personal</span>
+        <span class="tag" id="work">Work</span>
+        <span class="tag" id="shared">Shared</span>
+        <span class="tag" id="recent">Recent</span>
+        <span class="tag" id="urgent">Urgent</span>
         <span class="add-tag">+</span>
       </div>
       <hr>
-      <ul id="list-container"></ul>
+      <div class="tab-window">
+        <div class="tab-header">
+          <ul id="tab-header-list"></ul>
+        </div>
+        <div class="tab-content">
+          <ul id="list-container"></ul>
+        </div>
     </section>
   </main>
 </body>
