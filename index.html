@@ -16,34 +16,53 @@
 </head>
 
 <body>
+  <header>
+    <div class="header">
+      <h2>What-To-Do<img src="images/icon.png" alt="icon"></h2>
+      <span class="material-symbols-outlined data-theme" id="theme-toggle" class="switch">
+        table_lamp
+      </span>
+    </div>
+  </header>
   <main>
     <section class="todo-app">
-      <div class="header">
-        <h2>What-To-Do<img src="images/icon.png" alt="icon"></h2>
-        <span class="material-symbols-outlined data-theme" id="theme-toggle" class="switch">
-          table_lamp
-        </span>
+      <div class="menu">
+        <ul class="menu-list">
+          <li><span id="search-query"><input type="text" placeholder="Search..." /><span
+                class="material-symbols-outlined">
+                person_add
+              </span></span></li>
+          <li id="to-do-lists">List</li>
+          <hr>
+          <li id="shared-List">Collabs</li>
+          <li id="recently-Done">Recently Done</li>
+          <li id="urgent-Task">Urgent Tasks</li>
+          <hr>
+          <li id="settings">Settings</li>
+        </ul>
       </div>
-      <div class="row">
-        <input type="text" id="input-box" placeholder="Add your text" aria-label="task Input">
-        <button onclick="addTask()" aria-label="Add Task">Add</button>
-      </div>
-      <div class="list-type">
-        <span class="tag" id="untitled">Untitled</span>
-        <span class="tag" id="personal">Personal</span>
-        <span class="tag" id="work">Work</span>
-        <span class="tag" id="shared">Shared</span>
-        <span class="tag" id="recent">Recent</span>
-        <span class="tag" id="urgent">Urgent</span>
-        <span class="add-tag">+</span>
-      </div>
-      <hr>
-      <div class="tab-window">
-        <div class="tab-header">
-          <ul id="tab-header-list"></ul>
+      <div class="workspace">
+        <div class="row">
+          <input type="text" id="input-box" placeholder="Add your text" aria-label="task Input">
+          <button onclick="addTask()" aria-label="Add Task">Add</button>
         </div>
-        <div class="tab-content">
-          <ul id="list-container"></ul>
+        <div class="list-type">
+          <span class="tag" id="untitled">Untitled</span>
+          <span class="tag" id="personal">Personal</span>
+          <span class="tag" id="work">Work</span>
+          <span class="tag" id="shared">Shared</span>
+          <span class="tag" id="recent">Recent</span>
+          <span class="tag" id="urgent">Urgent</span>
+          <span class="add-tag">+</span>
+        </div>
+        <hr>
+        <div class="tab-window">
+          <div class="tab-header">
+            <ul id="tab-header-list"></ul>
+          </div>
+          <div class="tab-content">
+            <ul id="list-container"></ul>
+          </div>
         </div>
     </section>
   </main>
