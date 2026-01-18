@@ -186,7 +186,7 @@ input {
 button {
   border: none;
   outline: none;
-  padding: 1rem  3.125rem;
+  padding: 1rem 3.125rem;
   background: var(--accent);
   color: var(--primary-bg);
   font: 1rem;
@@ -207,7 +207,7 @@ button:hover {
   flex: 1 1 auto;
 }
 
- ul {
+ul {
   list-style: none;
 }
 
@@ -219,6 +219,7 @@ button:hover {
   user-select: none;
   cursor: pointer;
   position: relative;
+  overflow-x: hidden;
 }
 
 #list-container li::before {
@@ -308,9 +309,32 @@ button:hover {
   width: 20%;
   border-right: 1px solid var(--gray-hover);
   margin-right: 1rem;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  flex: 1 1 auto;
+  overflow-x: hidden;
 }
 
 .workspace {
   padding: 1rem;
   width: 100%;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  position: absolute;
+  z-index: 1;
+}
+
+.menu-list li {
+  padding: 0.3rem;
+  color: var(--text);
+
+}
+
+.menu-list li:hover {
+  color: var(--accent);
+  cursor: pointer;
 }
