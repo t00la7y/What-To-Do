@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="to-do-list" />
+    <meta name="author" content="Mpilo Shezi ( t00la7y )" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="to-do list, task manager, productivity, JavaScript, HTML, CSS" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="images/notepad.png" type="image/png" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../style.css" />
+
+    <!-- Component Stylesheets -->
+    <link rel="stylesheet" href="../css/components/toast.css" />
+    <link rel="stylesheet" href="../css/components/modal.css" />
+
+    <!-- Service Scripts -->
+    <script src="../js/services/storageService.js" defer></script>
+    <script src="../js/services/themeService.js" defer></script>
+
+    <!-- Utility Scripts -->
+    <script src="../js/utils/helpers.js" defer></script>
+
+    <!-- Component Scripts -->
+    <script src="../js/components/TagComponent.js" defer></script>
+    <script src="../js/components/TaskComponent.js" defer></script>
+    <script src="../js/components/ToastComponent.js" defer></script>
+    <script src="../js/components/SearchComponent.js" defer></script>
+
+    <!-- Main Application Script -->
+    <script src="../js/app.js" defer></script>
+    <link rel="icon" href="../images/notepad.png" type="image/png" />
+
+    <style>
+        .theme-btn {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+            font-weight: 500;
+            color: white;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        .theme-btn[data-theme="red"] {
+            background-color: hsl(0, 100%, 50%);
+        }
+
+        .theme-btn[data-theme="green"] {
+            background-color: hsl(120, 100%, 50%);
+        }
+
+        .theme-btn[data-theme="blue"] {
+            background-color: hsl(210, 100%, 50%);
+        }
+
+        .theme-btn[data-theme="gold"] {
+            background-color: hsl(39, 100%, 50%);
+            color: hsl(0, 0%, 20%);
+        }
+
+        .theme-btn[data-theme="purple"] {
+            background-color: hsl(280, 100%, 50%);
+        }
+
+        .theme-btn[data-theme="black"] {
+            background-color: hsl(0, 0%, 20%);
+        }
+    </style>
+    <title>What-To-Do</title>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <h2 id="home">What-To-Do<img src="../images/icon.png" alt="icon"></h2>
+            <span class="material-symbols-outlined data-theme" id="theme-toggle" class="switch">
+                table_lamp
+            </span>
+        </div>
+    </header>
+    <main>
+        <section class="todo-app">
+            <div class="menu">
+                <span id="search-query"><input type="text" placeholder="Search..." /></span>
+                <ul class="menu-list">
+                    <li id="to-do-lists">List</li>
+                    <li id="shared-List">Collabs</li>
+                    <li id="recently-Done">Recently Done</li>
+                    <li id="urgent-Task">Urgent Tasks</li>
+                    <li id="settings">Settings</li>
+                    <li id="user">User</li>
+                </ul>
+            </div>
+            <div class="workspace">
+                <h3>Settings</h3>
+                <div class="themes">
+                    <h2>Choose Themes</h2>
+                    <div class="light-themes">
+                        <button class="theme-btn" data-theme="red">Red</button>
+                        <button class="theme-btn" data-theme="green">Green</button>
+                        <button class="theme-btn" data-theme="blue">Blue</button>
+                        <button class="theme-btn" data-theme="gold">Gold</button>
+                        <button class="theme-btn" data-theme="purple">Purple</button>
+                        <button class="theme-btn" data-theme="black">Black</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <h4>© 2024 What-To-Do. All rights reserved.</h4>
+    </footer>
+    <script>
+        const homeLink = document.getElementById('home');
+        if (homeLink) {
+            homeLink.style.cursor = 'pointer';
+            homeLink.addEventListener('click', () => {
+                window.location.href = '../index.html';
+            });
+        }
+
+        window.addEventListener('load', () => {
+            try {
+                const themeButtons = document.querySelectorAll('.theme-btn');
+                const storage = new StorageService('wtd_');
+                const themeService = new ThemeService(storage);
+
+                themeButtons.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const theme = e.target.dataset.theme;
+                        themeService.setCustomTheme(theme);
+                        if (window.toast) {
+                            window.toast.success(`Theme changed to ${theme}`);
+                        }
+                    });
+                });
+
+                const currentTheme = themeService.getCustomTheme();
+                if (currentTheme) {
+                    const activeBtn = document.querySelector(`[data-theme="${currentTheme}"]`);
+                    if (activeBtn) {
+                        activeBtn.style.opacity = '0.7';
+                        activeBtn.style.fontWeight = 'bold';
+                    }
+                }
+            } catch (error) {
+                console.error('Theme setup error:', error);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

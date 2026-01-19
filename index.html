@@ -10,15 +10,37 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="icon" href="images/notepad.png" type="image/png" />
-  <script src="main.js" defer></script>
+  
+  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css" />
+  
+  <!-- Component Stylesheets -->
+  <link rel="stylesheet" href="css/components/toast.css" />
+  <link rel="stylesheet" href="css/components/modal.css" />
+  
+  <!-- Service Scripts -->
+  <script src="js/services/storageService.js" defer></script>
+  <script src="js/services/themeService.js" defer></script>
+  
+  <!-- Utility Scripts -->
+  <script src="js/utils/helpers.js" defer></script>
+  
+  <!-- Component Scripts -->
+  <script src="js/components/TagComponent.js" defer></script>
+  <script src="js/components/TaskComponent.js" defer></script>
+  <script src="js/components/ToastComponent.js" defer></script>
+  <script src="js/components/SearchComponent.js" defer></script>
+  
+  <!-- Main Application Script -->
+  <script src="js/app.js" defer></script>
+  
   <title>What-To-Do</title>
 </head>
 
 <body>
   <header>
     <div class="header">
-      <h2>What-To-Do<img src="images/icon.png" alt="icon"></h2>
+      <h2 id="home">What-To-Do<img src="images/icon.png" alt="icon"></h2>
       <span class="material-symbols-outlined data-theme" id="theme-toggle" class="switch">
         table_lamp
       </span>

@@ -9,9 +9,6 @@
   --text: hsl(0, 0%, 5%);
   --text-light: hsl(0, 0%, 33%);
   --gray-hover: hsl(0, 0%, 73%);
-  --soft-indigo: hsl(249, 79%, 67%);
-  --blue: hsl(207, 92%, 46%);
-  --fresh-teal: hsl(167, 100%, 36%);
 }
 
 :root.dark-mode {
@@ -22,10 +19,128 @@
   --text: hsl(0, 0%, 95%);
   --text-light: hsl(0, 0%, 67%);
   --gray-hover: hsl(0, 0%, 33%);
-  --soft-indigo: hsl(249, 79%, 67%);
-  --blue: hsl(207, 92%, 46%);
-  --fresh-teal: hsl(167, 100%, 36%);
 }
+
+:root.custom-theme.red {
+  --accent: hsl(0, 100%, 50%);
+  --accent-hover: hsl(0, 100%, 40%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.green {
+  --accent: hsl(120, 100%, 50%);
+  --accent-hover: hsl(120, 100%, 40%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.blue {
+  --accent: hsl(210, 100%, 50%);
+  --accent-hover: hsl(210, 100%, 40%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.gold {
+  --accent: hsl(39, 100%, 50%);
+  --accent-hover: hsl(39, 100%, 40%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.purple {
+  --accent: hsl(280, 100%, 50%);
+  --accent-hover: hsl(280, 100%, 40%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.black {
+  --accent: hsl(0, 0%, 20%);
+  --accent-hover: hsl(0, 0%, 10%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.red.dark-mode {
+  --accent: hsl(0, 100%, 50%);
+  --accent-hover: hsl(0, 100%, 40%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+:root.custom-theme.green.dark-mode {
+  --accent: hsl(120, 100%, 50%);
+  --accent-hover: hsl(120, 100%, 40%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+:root.custom-theme.blue.dark-mode {
+  --accent: hsl(210, 100%, 50%);
+  --accent-hover: hsl(210, 100%, 40%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+:root.custom-theme.gold.dark-mode {
+  --accent: hsl(51, 100%, 50%);
+  --accent-hover: hsl(39, 100%, 40%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+:root.custom-theme.purple.dark-mode {
+  --accent: hsl(280, 100%, 50%);
+  --accent-hover: hsl(280, 100%, 40%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+:root.custom-theme.black.dark-mode {
+  --accent: hsl(0, 0%, 20%);
+  --accent-hover: hsl(0, 0%, 10%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
 
 * {
   margin: 0;

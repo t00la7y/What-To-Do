@@ -1,0 +1,144 @@
+class Application {
+  constructor() {
+    this.storage = null;
+    this.theme = null;
+    this.tags = null;
+    this.tasks = null;
+    this.toast = null;
+    this.init();
+  }
+
+  async init() {
+    try {
+      this.storage = new StorageService('wtd_');
+
+      this.theme = new ThemeService(this.storage);
+
+      this.tags = new TagComponent('.list-type', this.storage);
+
+      this.tasks = new TaskComponent(
+        '#input-box',
+        'button[aria-label="Add Task"]',
+        '#list-container',
+        this.storage
+      );
+
+      this.toast = toast;
+
+      this.setupComponentBindings();
+
+      this.setupUIListeners();
+
+      this.loadInitialState();
+
+      this.toast.success('App initialized successfully!');
+    } catch (error) {
+      console.error('Initialization error:', error);
+      if (this.toast) {
+        this.toast.error('Failed to initialize app');
+      }
+    }
+  }
+
+  setupComponentBindings() {
+    this.tags.onTagChange = (tagId) => {
+      this.tasks.setCurrentTag(tagId);
+      this.toast.info(`Switched to ${this.tags.tags[tagId].name}`);
+    };
+  }
+
+  setupUIListeners() {
+    const homeTitle = document.getElementById('home');
+    if (homeTitle) {
+      homeTitle.style.cursor = 'pointer';
+      homeTitle.addEventListener('click', () => {
+        const currentPath = window.location.pathname;
+        
+        if (currentPath.includes('setting.html')) {
+          window.location.href = '../index.html';
+        } else {
+          window.location.reload();
+        }
+      });
+    }
+
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        this.theme.toggle();
+        const current = this.theme.getCurrentTheme();
+        this.toast.info(`Switched to ${current} mode`);
+      });
+    }
+
+    const searchInput = document.querySelector('#search-query input');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        this.handleSearch(e.target.value);
+      });
+    }
+
+    const menuItems = document.querySelectorAll('.menu-list li');
+    menuItems.forEach(item => {
+      item.addEventListener('click', () => {
+        this.handleMenuClick(item.id);
+      });
+    });
+  }
+
+  handleSearch(query) {
+    if (!query.trim()) {
+      this.tasks.renderTasks();
+      return;
+    }
+
+    const results = this.tasks.searchTasks(query);
+    this.tasks.container.innerHTML = '';
+
+    if (results.length === 0) {
+      this.tasks.container.innerHTML = 
+        '<li style="text-align: center; color: var(--text-light); padding: 2rem;">No matching tasks found</li>';
+      return;
+    }
+
+    results.forEach(taskText => {
+      const li = this.tasks.createTaskElement(taskText);
+      this.tasks.container.appendChild(li);
+    });
+  }
+
+  handleMenuClick(menuId) {
+    switch (menuId) {
+      case 'to-do-lists':
+        this.toast.info('Showing all tasks');
+        this.tasks.renderTasks();
+        break;
+      case 'shared-List':
+        this.tags.selectTag('shared');
+        break;
+      case 'recently-Done':
+        this.toast.warning('Recently Done feature coming soon');
+        break;
+      case 'urgent-Task':
+        this.tags.selectTag('urgent');
+        break;
+      case 'settings':
+        window.location.href = './pages/setting.html';
+        break;
+      case 'user':
+        this.toast.warning('User profile feature coming soon');
+        break;
+    }
+  }
+
+  loadInitialState() {
+    const firstTag = Object.keys(this.tags.tags)[0];
+    if (firstTag) {
+      this.tags.selectTag(firstTag);
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  window.app = new Application();
+});
