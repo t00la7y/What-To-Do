@@ -4,7 +4,7 @@ class ThemeService {
     this.THEME_KEY = 'theme';
     this.CUSTOM_THEME_KEY = 'customTheme';
     this.DARK_MODE = 'dark-mode';
-    this.CUSTOM_COLORS = ['red', 'green', 'blue', 'gold', 'purple', 'black'];
+    this.CUSTOM_COLORS = ['red', 'green', 'blue', 'gold', 'purple', 'black', 'orange'];
     this.init();
   }
 

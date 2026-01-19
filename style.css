@@ -4,8 +4,6 @@
 :root.dark-mode.light-mode {
   --primary-bg: hsl(0, 0%, 90%);
   --secondary-bg: hsl(220, 9%, 84%);
-  --accent: hsl(6, 100%, 63%);
-  --accent-hover: hsl(6, 74%, 55%);
   --text: hsl(0, 0%, 5%);
   --text-light: hsl(0, 0%, 33%);
   --gray-hover: hsl(0, 0%, 73%);
@@ -14,8 +12,6 @@
 :root.dark-mode {
   --primary-bg: hsl(0, 0%, 0%);
   --secondary-bg: hsl(220, 9%, 16%);
-  --accent: hsl(6, 100%, 63%);
-  --accent-hover: hsl(6, 74%, 55%);
   --text: hsl(0, 0%, 95%);
   --text-light: hsl(0, 0%, 67%);
   --gray-hover: hsl(0, 0%, 33%);
@@ -74,6 +70,16 @@
 :root.custom-theme.black {
   --accent: hsl(0, 0%, 20%);
   --accent-hover: hsl(0, 0%, 10%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.orange {
+  --accent: hsl(6, 100%, 63%);
+  --accent-hover: hsl(6, 74%, 55%);
   --text: hsl(0, 0%, 5%);
   --text-light: hsl(0, 0%, 33%);
   --gray-hover: hsl(0, 0%, 73%);
@@ -141,6 +147,15 @@
   --secondary-bg: hsl(220, 9%, 16%);
 }
 
+:root.custom-theme.orange.dark-mode {
+  --accent: hsl(6, 100%, 63%);
+  --accent-hover: hsl(6, 74%, 55%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
 
 * {
   margin: 0;
