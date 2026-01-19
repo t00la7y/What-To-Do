@@ -30,18 +30,14 @@
         <span id="search-query"><input type="text" placeholder="Search..." /></span>
         <ul class="menu-list">
           <li id="to-do-lists">List</li>
-            <li id="shared-List">Collabs</li>
-            <li id="recently-Done">Recently Done</li>
-            <li id="urgent-Task">Urgent Tasks</li>
-            <li id="settings">Settings</li>
-            <li id="user">User</li>
-          </ul>
+          <li id="shared-List">Collabs</li>
+          <li id="recently-Done">Recently Done</li>
+          <li id="urgent-Task">Urgent Tasks</li>
+          <li id="settings">Settings</li>
+          <li id="user">User</li>
+        </ul>
       </div>
       <div class="workspace">
-        <div class="row">
-          <input type="text" id="input-box" placeholder="Add your text" aria-label="task Input">
-          <button onclick="addTask()" aria-label="Add Task">Add</button>
-        </div>
         <div class="list-type">
           <span class="tag" id="untitled">Untitled</span>
           <span class="tag" id="personal">Personal</span>
@@ -51,17 +47,18 @@
           <span class="tag" id="urgent">Urgent</span>
           <span class="add-tag">+</span>
         </div>
-        <hr>
-        <div class="tab-window">
-          <div class="tab-header">
-            <ul id="tab-header-list"></ul>
-          </div>
-          <div class="tab-content">
-            <ul id="list-container"></ul>
-          </div>
+        <div class="row">
+          <input type="text" id="input-box" placeholder="Add your text" aria-label="task Input">
+          <button onclick="addTask()" aria-label="Add Task">Add</button>
+        </div>
+        <div class="tag-content">
+          <ul id="list-container"></ul>
         </div>
     </section>
   </main>
+  <footer>
+    <h4>© 2024 What-To-Do. All rights reserved.</h4>
+  </footer>
 </body>
 
 </html>
