@@ -49,18 +49,7 @@ class Application {
 
   setupUIListeners() {
     const homeTitle = document.getElementById('home');
-    if (homeTitle) {
-      homeTitle.style.cursor = 'pointer';
-      homeTitle.addEventListener('click', () => {
-        const currentPath = window.location.pathname;
-        
-        if (currentPath.includes('setting.html')) {
-          window.location.href = '../index.html';
-        } else {
-          window.location.reload();
-        }
-      });
-    }
+    homeTitle.addEventListener('click', () => { showPage("page-home"); });
 
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
@@ -109,10 +98,6 @@ class Application {
 
   handleMenuClick(menuId) {
     switch (menuId) {
-      case 'to-do-lists':
-        this.toast.info('Showing all tasks');
-        this.tasks.renderTasks();
-        break;
       case 'shared-List':
         this.tags.selectTag('shared');
         break;
@@ -123,7 +108,7 @@ class Application {
         this.tags.selectTag('urgent');
         break;
       case 'settings':
-        window.location.href = './pages/setting.html';
+        addEventListener("click", () => { showPage("page-setting"); });
         break;
       case 'user':
         this.toast.warning('User profile feature coming soon');

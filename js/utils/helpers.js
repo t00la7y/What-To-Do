@@ -1,6 +1,6 @@
 function debounce(func, delay = 300) {
   let timeoutId;
-  return function(...args) {
+  return function (...args) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => func.apply(this, args), delay);
   };
@@ -8,7 +8,7 @@ function debounce(func, delay = 300) {
 
 function throttle(func, interval = 300) {
   let lastCallTime = 0;
-  return function(...args) {
+  return function (...args) {
     const now = Date.now();
     if (now - lastCallTime >= interval) {
       lastCallTime = now;
@@ -54,12 +54,12 @@ function hasClass(element, className) {
 }
 
 function formatDate(date) {
-  return new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   });
 }
 
@@ -68,7 +68,7 @@ function capitalize(str) {
 }
 
 function camelToKebab(str) {
-  return str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
+  return str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
 }
 
 function kebabToCamel(str) {
@@ -76,11 +76,11 @@ function kebabToCamel(str) {
 }
 
 function generateId() {
-  return 'id_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+  return "id_" + Date.now() + "_" + Math.random().toString(36).substr(2, 9);
 }
 
 function wait(ms = 1000) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function getQueryParam(param) {
@@ -107,7 +107,7 @@ async function copyToClipboard(text) {
     await navigator.clipboard.writeText(text);
     return true;
   } catch (error) {
-    console.error('Failed to copy:', error);
+    console.error("Failed to copy:", error);
     return false;
   }
 }
@@ -133,12 +133,18 @@ function sortBy(array, key, ascending = true) {
 
 function unique(array, key = null) {
   if (!key) return [...new Set(array)];
-  
+
   const seen = new Set();
-  return array.filter(item => {
-    const value = typeof key === 'function' ? key(item) : item[key];
+  return array.filter((item) => {
+    const value = typeof key === "function" ? key(item) : item[key];
     if (seen.has(value)) return false;
     seen.add(value);
     return true;
   });
+}
+
+function showPage(pageClass) {
+  const pages = document.querySelectorAll(".page-home, .page-setting");
+  pages.forEach((p) => (p.style.display = "none"));
+  document.querySelector(`.${pageClass}`).style.display = "block";
 }

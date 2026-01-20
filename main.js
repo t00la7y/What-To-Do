@@ -283,9 +283,6 @@ function displayCheckedTasks() {
   }
 }
 
-function showSettings() {
-  alert('Settings feature coming soon!');
-}
 
 function showUserProfile() {
   alert('User Profile feature coming soon!');

@@ -48,8 +48,8 @@
 }
 
 :root.custom-theme.gold {
-  --accent: hsl(39, 100%, 50%);
-  --accent-hover: hsl(39, 100%, 40%);
+  --accent: hsl(51, 100%, 45%);
+  --accent-hover: hsl(50, 100%, 55%);
   --text: hsl(0, 0%, 5%);
   --text-light: hsl(0, 0%, 33%);
   --gray-hover: hsl(0, 0%, 73%);
@@ -78,8 +78,8 @@
 }
 
 :root.custom-theme.orange {
-  --accent: hsl(6, 100%, 63%);
-  --accent-hover: hsl(6, 74%, 55%);
+  --accent: hsl(30, 100%, 50%);
+  --accent-hover: hsl(30, 100%, 60%);
   --text: hsl(0, 0%, 5%);
   --text-light: hsl(0, 0%, 33%);
   --gray-hover: hsl(0, 0%, 73%);
@@ -138,8 +138,8 @@
 }
 
 :root.custom-theme.black.dark-mode {
-  --accent: hsl(0, 0%, 20%);
-  --accent-hover: hsl(0, 0%, 10%);
+  --accent: hsl(0, 0%, 80%);
+  --accent-hover: hsl(0, 0%, 70%);
   --text: hsl(0, 0%, 95%);
   --text-light: hsl(0, 0%, 67%);
   --gray-hover: hsl(0, 0%, 33%);
@@ -148,8 +148,8 @@
 }
 
 :root.custom-theme.orange.dark-mode {
-  --accent: hsl(6, 100%, 63%);
-  --accent-hover: hsl(6, 74%, 55%);
+  --accent: hsl(30, 100%, 50%);
+  --accent-hover: hsl(30, 100%, 60%);
   --text: hsl(0, 0%, 95%);
   --text-light: hsl(0, 0%, 67%);
   --gray-hover: hsl(0, 0%, 33%);
@@ -435,8 +435,9 @@ ul {
 }
 
 .menu {
-  position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
   width: 20%;
   border-right: 1px solid var(--gray-hover);
   margin-right: 1rem;
@@ -446,17 +447,10 @@ ul {
   overflow-x: hidden;
 }
 
-.workspace {
-  padding: 1rem;
-  width: 100%;
-  flex-wrap: wrap;
-}
-
 .menu-list {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  position: absolute;
   z-index: 1;
 }
 
@@ -471,10 +465,51 @@ ul {
   cursor: pointer;
 }
 
+.menu #tag-delete {
+  padding-top: 4rem;
+  align-self: center;
+}
+
+.page-home {
+  width: 80%;
+}
+
+.page-setting {
+  width: 80%;
+}
+
+.light-themes {
+  padding-top: 0.1rem;
+  border-bottom: 2px solid var(--secondary-bg);
+}
+
+.themes h2 {
+  width: 13rem;
+  padding-top: 0.2rem;
+}
+
+.themes h2:hover {
+  width: 13rem;
+  padding-top: 0.2rem;
+  border-bottom: 2px solid var(--accent);
+}
+
 footer {
-  display:flex;
+  display: flex;
   flex-direction: row;
-  justify-content: center ;
-  color: var(--text-light) ;
-  font-size: 0.875rem ;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: 0.875rem;
+}
+
+#page-setting-btn {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  font-weight: 500;
+  color: white;
 }
