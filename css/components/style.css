@@ -1,0 +1,608 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root,
+:root.dark-mode.light-mode {
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+}
+
+:root.dark-mode {
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+}
+
+:root.custom-theme.red {
+  --accent: hsl(0, 100%, 50%);
+  --accent-hover: hsl(0, 100%, 40%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.green {
+  --accent: hsl(120, 100%, 50%);
+  --accent-hover: hsl(120, 100%, 40%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.blue {
+  --accent: hsl(210, 100%, 50%);
+  --accent-hover: hsl(210, 100%, 40%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.gold {
+  --accent: hsl(46, 65%, 52%);
+  --accent-hover: hsl(50, 100%, 55%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.purple {
+  --accent: hsl(280, 100%, 50%);
+  --accent-hover: hsl(280, 100%, 40%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.black {
+  --accent: hsl(0, 0%, 20%);
+  --accent-hover: hsl(0, 0%, 10%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.orange {
+  --accent: hsl(30, 100%, 50%);
+  --accent-hover: hsl(30, 100%, 60%);
+  --text: hsl(0, 0%, 5%);
+  --text-light: hsl(0, 0%, 33%);
+  --gray-hover: hsl(0, 0%, 73%);
+  --primary-bg: hsl(0, 0%, 90%);
+  --secondary-bg: hsl(220, 9%, 84%);
+}
+
+:root.custom-theme.red.dark-mode {
+  --accent: hsl(0, 100%, 50%);
+  --accent-hover: hsl(0, 100%, 40%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+:root.custom-theme.green.dark-mode {
+  --accent: hsl(120, 100%, 50%);
+  --accent-hover: hsl(120, 100%, 40%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+:root.custom-theme.blue.dark-mode {
+  --accent: hsl(210, 100%, 50%);
+  --accent-hover: hsl(210, 100%, 40%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+:root.custom-theme.gold.dark-mode {
+  --accent: hsl(51, 100%, 50%);
+  --accent-hover: hsl(39, 100%, 40%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+:root.custom-theme.purple.dark-mode {
+  --accent: hsl(280, 100%, 50%);
+  --accent-hover: hsl(280, 100%, 40%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+:root.custom-theme.black.dark-mode {
+  --accent: hsl(0, 0%, 80%);
+  --accent-hover: hsl(0, 0%, 70%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+:root.custom-theme.orange.dark-mode {
+  --accent: hsl(30, 100%, 50%);
+  --accent-hover: hsl(30, 100%, 60%);
+  --text: hsl(0, 0%, 95%);
+  --text-light: hsl(0, 0%, 67%);
+  --gray-hover: hsl(0, 0%, 33%);
+  --primary-bg: hsl(0, 0%, 0%);
+  --secondary-bg: hsl(220, 9%, 16%);
+}
+
+.theme-btn {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  font-weight: 500;
+  color: white;
+}
+
+.theme-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+.theme-btn[data-theme="red"] {
+  background-color: hsl(0, 100%, 50%);
+}
+
+.theme-btn[data-theme="green"] {
+  background-color: hsl(120, 100%, 50%);
+}
+
+.theme-btn[data-theme="blue"] {
+  background-color: hsl(210, 100%, 50%);
+}
+
+.theme-btn[data-theme="gold"] {
+  background-color: hsl(46, 65%, 52%);
+  color: hsl(0, 0%, 20%);
+}
+
+.theme-btn[data-theme="purple"] {
+  background-color: hsl(280, 100%, 50%);
+}
+
+.theme-btn[data-theme="black"] {
+  background-color: hsl(0, 0%, 20%);
+}
+
+.theme-btn[data-theme="orange"] {
+  background-color: hsl(30, 100%, 50%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--primary-bg)
+}
+
+.header {
+  width: 100%;
+  padding: 1.875rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header #home {
+  cursor: pointer;
+}
+
+h2 {
+  color: var(--text);
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+h2 img {
+  width: 1.875rem;
+  margin-left: 0rem;
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: var(--primary-bg);
+  color: var(--text);
+}
+
+.todo-app {
+  width: 100%;
+  min-height: 80vh;
+  background-color: var(--primary-bg);
+  padding: 2.5rem 1.875rem 4.375rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
+  font-size: 2rem;
+  background-color: var(--primary-bg);
+  color: var(--text);
+}
+
+.row {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--secondary-bg);
+  border-radius: 1.875rem;
+  padding-left: 1.25rem;
+  margin-bottom: 1.5625rem;
+}
+
+.list-type {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.list-type .tag {
+  background-color: var(--secondary-bg);
+  color: var(--text);
+  border: 2px solid var(--secondary-bg);
+  border-radius: 1.875rem;
+  padding: 0.1rem 1.25rem;
+  margin-bottom: 1.5625rem;
+  transition: all 0.3s ease;
+}
+
+.list-type .tag:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.list-type .tag-filter {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: var(--primary-bg);
+}
+
+.list-type .tag-filter:hover {
+  border-color: var(--accent-hover);
+  background-color: var(--accent);
+  color: var(--primary-bg);
+}
+
+.list-type .add-tag {
+  background-color: var(--secondary-bg);
+  color: var(--text);
+  border: 2px solid var(--secondary-bg);
+  border-radius: 1.875rem;
+  padding: 0.1rem 1.25rem;
+  margin-bottom: 1.5625rem;
+  transition: all 0.3s ease;
+}
+
+.list-type .add-tag:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.list-type .add-tag-filter {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: var(--primary-bg);
+}
+
+.list-type .add-tag-filter:hover {
+  border-color: var(--accent-hover);
+  background-color: var(--accent);
+  color: var(--primary-bg);
+}
+
+hr {
+  border: none;
+  width: 90%;
+  height: 1px;
+  background-color: var(--gray-hover);
+  margin: 0 auto 1rem;
+}
+
+input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.625rem;
+  color: var(--text);
+}
+
+button {
+  border: none;
+  outline: none;
+  padding: 1rem 3.125rem;
+  background: var(--accent);
+  color: var(--primary-bg);
+  font: 1rem;
+  cursor: pointer;
+  border-radius: 2.5rem;
+}
+
+button:hover {
+  background: var(--accent-hover);
+  transition: 0.3s ease;
+}
+
+.tab-window {
+  min-height: 15rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+ul {
+  list-style: none;
+}
+
+#list-container li {
+  color: var(--text);
+  list-style: none;
+  font-size: 1.0625rem;
+  padding: 0.75rem 0.5rem 0.75rem 3.125rem;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  overflow-x: hidden;
+}
+
+#list-container li::before {
+  content: '';
+  position: absolute;
+  height: 1.75rem;
+  width: 1.75rem;
+  border-radius: 50%;
+  background-image: url(../../images/unchecked.png);
+  background-size: cover;
+  background-position: center;
+  top: 0.75rem;
+  left: 0.5rem;
+}
+
+#list-container li.checked {
+  color: var(--text-light);
+  text-decoration: line-through;
+}
+
+#list-container li.checked::before {
+  background-image: url(../../images/checked.png);
+}
+
+#list-container li span {
+  position: absolute;
+  right: 0;
+  top: 0.3125rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.375rem;
+  color: var(--text-light);
+  line-height: 2.5rem;
+  text-align: center;
+  border-radius: 50%;
+}
+
+#list-container li span:hover {
+  background-color: var(--gray-hover);
+}
+
+/* Tab Header Styles */
+#tab-header-list {
+  display: flex;
+  list-style: none;
+  border-bottom: 2px solid var(--secondary-bg);
+  margin-bottom: 1rem;
+  gap: 0.1rem;
+}
+
+#tab-header-list .tab {
+  padding: 0.75rem 1.25rem;
+  background-color: var(--secondary-bg);
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+#tab-header-list .tab:hover {
+  background-color: var(--secondary-bg);
+}
+
+#tab-header-list .tab.active-tab {
+  background-color: var(--accent);
+  color: white;
+}
+
+#tab-header-list .tab-close {
+  cursor: pointer;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.2rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 20%;
+  border-right: 1px solid var(--gray-hover);
+  margin-right: 1rem;
+  padding-top: 4rem;
+  padding-left: 1rem;
+  flex: 1 1 auto;
+  overflow-x: hidden;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  z-index: 1;
+}
+
+.menu-list li {
+  padding: 0.3rem;
+  color: var(--text);
+
+}
+
+.menu-list li:hover {
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.menu #tag-delete {
+  padding-top: 4rem;
+  align-self: center;
+}
+
+.page-home {
+  width: 80%;
+}
+
+.page-setting {
+  width: 80%;
+}
+
+.light-themes {
+  padding-top: 0.1rem;
+  border-bottom: 2px solid var(--secondary-bg);
+}
+
+.themes h2 {
+  width: 13rem;
+  padding-top: 0.2rem;
+}
+
+.themes h2:hover {
+  width: 13rem;
+  padding-top: 0.2rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: 0.875rem;
+}
+
+#page-setting-btn {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  font-weight: 500;
+  color: white;
+}
+
+.font-settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-top: 1rem;
+}
+
+.data-settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-top: 1rem;
+}
+
+.page-User {
+  width: 80%;
+}
+
+#tag-delete.drag-over {
+  color: red;
+  transform: scale(1.2);
+}
+
+.tag.dragging {
+  opacity: 0.5;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  background-color: var(--secondary-bg) !important;
+}

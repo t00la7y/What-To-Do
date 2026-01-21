@@ -16,7 +16,7 @@
 
   <!-- Component Stylesheets -->
   <link rel="stylesheet" href="css/components/toast.css" />
-  <link rel="stylesheet" href="css/components/modal.css" />
+  <link rel="stylesheet" href="css/components/style.css" />
 
   <!-- Service Scripts -->
   <script src="js/services/storageService.js" defer></script>
@@ -33,53 +33,6 @@
 
   <!-- Main Application Script -->
   <script src="js/app.js" defer></script>
-  <style>
-    .theme-btn {
-      padding: 10px 20px;
-      margin: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s, color 0.3s, transform 0.2s;
-      font-weight: 500;
-      color: white;
-    }
-
-    .theme-btn:hover {
-      transform: scale(1.05);
-      opacity: 0.8;
-    }
-
-    .theme-btn[data-theme="red"] {
-      background-color: hsl(0, 100%, 50%);
-    }
-
-    .theme-btn[data-theme="green"] {
-      background-color: hsl(120, 100%, 50%);
-    }
-
-    .theme-btn[data-theme="blue"] {
-      background-color: hsl(210, 100%, 50%);
-    }
-
-    .theme-btn[data-theme="gold"] {
-      background-color: hsl(50, 100%, 50%);
-      color: hsl(0, 0%, 20%);
-    }
-
-    .theme-btn[data-theme="purple"] {
-      background-color: hsl(280, 100%, 50%);
-    }
-
-    .theme-btn[data-theme="black"] {
-      background-color: hsl(0, 0%, 20%);
-    }
-
-    .theme-btn[data-theme="orange"] {
-      background-color: hsl(30, 100%, 50%);
-    }
-  </style>
   <title>What-To-Do</title>
 </head>
 
@@ -103,19 +56,18 @@
           <li id="settings">Settings</li>
           <li id="user">User</li>
         </ul>
-        <span id="tag-delete" class="material-symbols-outlined">
+        <span id="tag-delete" class="material-symbols-outlined" title="Delete Tag" aria-label="Delete Tag">
           delete
         </span>
       </div>
       <div class="page-home">
         <div class="list-type">
-          <span class="tag" id="untitled">Untitled</span>
-          <span class="tag" id="personal">Personal</span>
-          <span class="tag" id="work">Work</span>
-          <span class="tag" id="shared">Shared</span>
-          <span class="tag" id="recent">Recent</span>
-          <span class="tag" id="urgent">Urgent</span>
-          <span class="add-tag">+</span>
+          <span class="tag" id="untitled" draggable="true">Untitled</span>
+          <span class="tag" id="personal" draggable="true">Personal</span>
+          <span class="tag" id="work" draggable="true">Work</span>
+          <span class="tag" id="shared" draggable="true">Shared</span>
+          <span class="tag" id="recent" draggable="true">Recent</span>
+          <span class="tag" id="urgent" draggable="true">Urgent</span>
         </div>
         <div class="row">
           <input type="text" id="input-box" placeholder="Add your text" aria-label="task Input">
@@ -144,71 +96,43 @@
         </div>
         <div class="font-settings">
           <h2 style="color: var(--text);">Font Size</h2>
-          <button id="page-setting-btn" onclick="setFontSize('small')">Small</button> 
-          <button id="page-setting-btn" onclick="setFontSize('medium')">Medium</button>
-          <button id="page-setting-btn" onclick="setFontSize('large')">Large</button>
+          <div class="font-settings-btns">
+            <button id="page-setting-btn" onclick="setFontSize('small')">Small</button>
+            <button id="page-setting-btn" onclick="setFontSize('medium')">Medium</button>
+            <button id="page-setting-btn" onclick="setFontSize('large')">Large</button>
+          </div>
         </div>
         <div class="data-settings">
-          <h2 style="color: var(--text);">Data</h2> 
-          <button id="page-setting-btn" onclick="clearTasks()">Clear All Tasks</button>
-          <button id="page-setting-btn" onclick="exportTasks()">Export Tasks</button>
+          <h2 style="color: var(--text);">Data</h2>
+          <div class="data-settings-btns">
+            <button id="page-setting-btn" onclick="clearTasks()">Clear All Tasks</button>
+            <button id="page-setting-btn" onclick="exportTasks()">Export Tasks</button>
+          </div>
+        </div>
+      </div>
+      <div class="page-User" hidden display="none">
+        <h2>User Profile</h2>
+        <div class="user-info">
+          <img id="profile-photo" src="images/default-avatar.png" alt="User Avatar" class="avatar">
+          <form action="POST" id="user-form">
+            <label for="username" style="color: var(--text);">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username">
+            <br>
+            <label for="email" style="color: var(--text);">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <br>
+            <button type="submit">Log In</button>
+            <button type="button">Sign Up</button>
+            <input type="file" id="photo-upload" accept="image/*">
+          </form>
         </div>
       </div>
     </section>
   </main>
   <footer>
-    <h4>© 2024 What-To-Do. All rights reserved.</h4>
+    <h4>© 2026 What-To-Do. All rights reserved.</h4>
   </footer>
   <script>
-    const homeLink = document.getElementById('home');
-    if (homeLink) {
-      homeLink.style.cursor = 'pointer';
-      homeLink.addEventListener('click', () => {
-        window.location.href = '../index.html';
-      });
-    }
-
-    window.addEventListener('load', () => {
-      try {
-        const themeButtons = document.querySelectorAll('.theme-btn');
-        const storage = new StorageService('wtd_');
-        const themeService = new ThemeService(storage);
-
-        themeButtons.forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            const theme = e.target.dataset.theme;
-            themeService.setCustomTheme(theme);
-            if (window.toast) {
-              window.toast.success(`Theme changed to ${theme}`);
-            }
-          });
-        });
-
-        const currentTheme = themeService.getCustomTheme();
-        if (currentTheme) {
-          const activeBtn = document.querySelector(`[data-theme="${currentTheme}"]`);
-          if (activeBtn) {
-            activeBtn.style.opacity = '0.7';
-            activeBtn.style.fontWeight = 'bold';
-          }
-        }
-      } catch (error) {
-        console.error('Theme setup error:', error);
-      }
-    });
-
-    function loadTheme() {
-      const isDarkMode = localStorage.getItem(DARK_MODE_KEY) === 'true';
-      if (isDarkMode) {
-        document.documentElement.classList.add('dark-mode');
-      }
-    }
-
-    function toggleTheme() {
-      document.documentElement.classList.toggle('dark-mode');
-      const isDarkMode = document.documentElement.classList.contains('dark-mode');
-      localStorage.setItem(DARK_MODE_KEY, isDarkMode);
-    }
   </script>
 </body>
 

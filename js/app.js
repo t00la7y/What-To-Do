@@ -10,17 +10,17 @@ class Application {
 
   async init() {
     try {
-      this.storage = new StorageService('wtd_');
+      this.storage = new StorageService("wtd_");
 
       this.theme = new ThemeService(this.storage);
 
-      this.tags = new TagComponent('.list-type', this.storage);
+      this.tags = new TagComponent(".list-type", this.storage);
 
       this.tasks = new TaskComponent(
-        '#input-box',
+        "#input-box",
         'button[aria-label="Add Task"]',
-        '#list-container',
-        this.storage
+        "#list-container",
+        this.storage,
       );
 
       this.toast = toast;
@@ -31,11 +31,11 @@ class Application {
 
       this.loadInitialState();
 
-      this.toast.success('App initialized successfully!');
+      //   this.toast.success('App initialized successfully!');
     } catch (error) {
-      console.error('Initialization error:', error);
+      console.error("Initialization error:", error);
       if (this.toast) {
-        this.toast.error('Failed to initialize app');
+        this.toast.error("Failed to initialize app");
       }
     }
   }
@@ -43,33 +43,42 @@ class Application {
   setupComponentBindings() {
     this.tags.onTagChange = (tagId) => {
       this.tasks.setCurrentTag(tagId);
-      this.toast.info(`Switched to ${this.tags.tags[tagId].name}`);
+      //   this.toast.info(`Switched to ${this.tags.tags[tagId].name}`);
     };
   }
 
-  setupUIListeners() {
-    const homeTitle = document.getElementById('home');
-    homeTitle.addEventListener('click', () => { showPage("page-home"); });
+  showPage(pageClass) {
+    document.querySelectorAll(".page").forEach((p) => (p.hidden = true));
+    const target = document.querySelector(`.${pageClass}`);
+    if (target) target.hidden = false;
+  }
 
-    const themeToggle = document.getElementById('theme-toggle');
+  setupUIListeners() {
+    document.addEventListener("DOMContentLoaded", () => {
+      const homeTitle = document.getElementById("home");
+      if (homeTitle) {
+        homeTitle.onclick = () => {
+          app.showPage("page-home");
+        };
+      }
+    });
+
+    const themeToggle = document.getElementById("theme-toggle");
     if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
+      themeToggle.addEventListener("click", () => {
         this.theme.toggle();
-        const current = this.theme.getCurrentTheme();
-        this.toast.info(`Switched to ${current} mode`);
       });
     }
 
-    const searchInput = document.querySelector('#search-query input');
+    const searchInput = document.querySelector("#search-query input");
     if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
+      searchInput.addEventListener("input", (e) => {
         this.handleSearch(e.target.value);
       });
     }
-
-    const menuItems = document.querySelectorAll('.menu-list li');
-    menuItems.forEach(item => {
-      item.addEventListener('click', () => {
+    const menuItems = document.querySelectorAll(".menu-list li");
+    menuItems.forEach((item) => {
+      item.addEventListener("click", () => {
         this.handleMenuClick(item.id);
       });
     });
@@ -82,15 +91,15 @@ class Application {
     }
 
     const results = this.tasks.searchTasks(query);
-    this.tasks.container.innerHTML = '';
+    this.tasks.container.innerHTML = "";
 
     if (results.length === 0) {
-      this.tasks.container.innerHTML = 
+      this.tasks.container.innerHTML =
         '<li style="text-align: center; color: var(--text-light); padding: 2rem;">No matching tasks found</li>';
       return;
     }
 
-    results.forEach(taskText => {
+    results.forEach((taskText) => {
       const li = this.tasks.createTaskElement(taskText);
       this.tasks.container.appendChild(li);
     });
@@ -98,20 +107,34 @@ class Application {
 
   handleMenuClick(menuId) {
     switch (menuId) {
-      case 'shared-List':
-        this.tags.selectTag('shared');
+      case "shared-List":
+        this.tags.selectTag("shared");
+        addEventListener("click", () => {
+          showPage("page-home");
+        });
         break;
-      case 'recently-Done':
-        this.toast.warning('Recently Done feature coming soon');
+      case "recently-Done":
+        this.tags.selectTag("recent");
+        addEventListener("click", () => {
+          showPage("page-home");
+        });
         break;
-      case 'urgent-Task':
-        this.tags.selectTag('urgent');
+      case "urgent-Task":
+        this.tags.selectTag("urgent");
+        addEventListener("click", () => {
+          showPage("page-home");
+        });
         break;
-      case 'settings':
-        addEventListener("click", () => { showPage("page-setting"); });
+      case "settings":
+        addEventListener("click", () => {
+          showPage("page-setting");
+        });
         break;
-      case 'user':
-        this.toast.warning('User profile feature coming soon');
+      case "user":
+        this.tags.selectTag("user");
+        addEventListener("click", () => {
+          showPage("page-User");
+        });
         break;
     }
   }
@@ -124,6 +147,6 @@ class Application {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   window.app = new Application();
 });
