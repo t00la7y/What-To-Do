@@ -216,6 +216,10 @@ body {
   background: var(--primary-bg)
 }
 
+.page-home {
+  width: 80%;
+}
+
 .header {
   width: 100%;
   padding: 1.875rem;
@@ -402,7 +406,7 @@ ul {
   overflow-x: hidden;
 }
 
-#list-container li::before {
+#list-container li:not(#no-task)::before {
   content: '';
   position: absolute;
   height: 1.75rem;
@@ -415,12 +419,12 @@ ul {
   left: 0.5rem;
 }
 
-#list-container li.checked {
+#list-container li:not(#no-task).checked {
   color: var(--text-light);
   text-decoration: line-through;
 }
 
-#list-container li.checked::before {
+#list-container li:not(#no-task).checked::before {
   background-image: url(../../images/checked.png);
 }
 
@@ -467,7 +471,7 @@ ul {
   background-color: var(--secondary-bg);
 }
 
-#tab-header-list .tab.active-tab {
+#tab-header-list .tab:not(#addTag).active-tab {
   background-color: var(--accent);
   color: white;
 }
@@ -487,7 +491,7 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  width: 20%;
+  max-width: 20%;
   border-right: 1px solid var(--gray-hover);
   margin-right: 1rem;
   padding-top: 4rem;
@@ -501,10 +505,12 @@ ul {
   flex-direction: column;
   gap: 0.2rem;
   z-index: 1;
+  width: 20%;
 }
 
 .menu-list li {
   padding: 0.3rem;
+  width: 10%;
   color: var(--text);
 
 }
@@ -517,14 +523,6 @@ ul {
 .menu #tag-delete {
   padding-top: 4rem;
   align-self: center;
-}
-
-.page-home {
-  width: 80%;
-}
-
-.page-setting {
-  width: 80%;
 }
 
 .light-themes {
@@ -575,10 +573,6 @@ footer {
   flex-direction: column;
   justify-content: start;
   padding-top: 1rem;
-}
-
-.page-User {
-  width: 80%;
 }
 
 #tag-delete.drag-over {

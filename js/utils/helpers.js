@@ -144,7 +144,13 @@ function unique(array, key = null) {
 }
 
 function showPage(pageClass) {
-  const pages = document.querySelectorAll(".page-home, .page-setting");
-  pages.forEach((p) => (p.style.display = "none"));
-  document.querySelector(`.${pageClass}`).style.display = "block";
+  const pages = document.querySelectorAll(
+    ".page-home, .page-setting, .page-user",
+  );
+  pages.forEach((page) => (page.hidden = true));
+  const target = document.querySelector(`.${pageClass}`);
+  if (target) {
+    target.hidden = false;
+    target.style.width = "80%";
+  }
 }

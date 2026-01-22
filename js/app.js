@@ -47,21 +47,7 @@ class Application {
     };
   }
 
-  showPage(pageClass) {
-    document.querySelectorAll(".page").forEach((p) => (p.hidden = true));
-    const target = document.querySelector(`.${pageClass}`);
-    if (target) target.hidden = false;
-  }
-
   setupUIListeners() {
-    document.addEventListener("DOMContentLoaded", () => {
-      const homeTitle = document.getElementById("home");
-      if (homeTitle) {
-        homeTitle.onclick = () => {
-          app.showPage("page-home");
-        };
-      }
-    });
 
     const themeToggle = document.getElementById("theme-toggle");
     if (themeToggle) {
@@ -107,6 +93,11 @@ class Application {
 
   handleMenuClick(menuId) {
     switch (menuId) {
+      case "home":
+        this.tags.selectTag("untitled");
+        addEventListener("click", () => { 
+          showPage("page-home");})
+        break;
       case "shared-List":
         this.tags.selectTag("shared");
         addEventListener("click", () => {
@@ -133,7 +124,7 @@ class Application {
       case "user":
         this.tags.selectTag("user");
         addEventListener("click", () => {
-          showPage("page-User");
+          showPage("page-user").style.width = "80%";
         });
         break;
     }

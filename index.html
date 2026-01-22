@@ -39,7 +39,7 @@
 <body>
   <header>
     <div class="header">
-      <h2 id="home">What-To-Do<img src="images/icon.png" alt="icon"></h2>
+      <h2>What-To-Do<img src="images/icon.png" alt="icon"></h2>
       <span class="material-symbols-outlined data-theme" id="theme-toggle" class="switch">
         table_lamp
       </span>
@@ -50,7 +50,8 @@
       <div class="menu">
         <span id="search-query"><input type="text" placeholder="Search..." /></span>
         <ul class="menu-list">
-          <li id="shared-List">Collabs</li>
+          <li id="home">home</li>
+          <li id="shared-List">Shared</li>
           <li id="recently-Done">Recent</li>
           <li id="urgent-Task">Urgent</li>
           <li id="settings">Settings</li>
@@ -68,6 +69,7 @@
           <span class="tag" id="shared" draggable="true">Shared</span>
           <span class="tag" id="recent" draggable="true">Recent</span>
           <span class="tag" id="urgent" draggable="true">Urgent</span>
+          <span class="tag" id="addTag" draggable="false">+</span>
         </div>
         <div class="row">
           <input type="text" id="input-box" placeholder="Add your text" aria-label="task Input">
@@ -76,9 +78,6 @@
         <div class="tag-content">
           <ul id="list-container"></ul>
         </div>
-      </div>
-      <div class="page-To-Do-Lists">
-
       </div>
       <div class="page-setting" hidden>
         <h3 style="color: var(--text);">Settings</h3>
@@ -110,7 +109,7 @@
           </div>
         </div>
       </div>
-      <div class="page-User" hidden display="none">
+      <div class="page-user" hidden>
         <h2>User Profile</h2>
         <div class="user-info">
           <img id="profile-photo" src="images/default-avatar.png" alt="User Avatar" class="avatar">
