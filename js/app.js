@@ -81,7 +81,7 @@ class Application {
 
     if (results.length === 0) {
       this.tasks.container.innerHTML =
-        '<li style="text-align: center; color: var(--text-light); padding: 2rem;">No matching tasks found</li>';
+        '<li id="no-task" style="text-align: center; color: var(--text-light); padding: 2rem;">No matching tasks found</li>';
       return;
     }
 

@@ -143,14 +143,16 @@ function unique(array, key = null) {
   });
 }
 
-function showPage(pageClass) {
-  const pages = document.querySelectorAll(
-    ".page-home, .page-setting, .page-user",
-  );
-  pages.forEach((page) => (page.hidden = true));
-  const target = document.querySelector(`.${pageClass}`);
-  if (target) {
-    target.hidden = false;
-    target.style.width = "80%";
-  }
+function showPage(pageClass) { 
+  const pages = document.querySelectorAll('[class^="page-"]'); 
+  
+  pages.forEach(page => { page.hidden = true; page.style.display = "none"; }); 
+  
+  const target = document.querySelector(`.${pageClass}`); 
+  if (target) { 
+    target.style.display = pageClass === "page-SignUp" ? "flex" : "Block"; 
+    target.style.height = "30rem"; 
+    target.style.width = "80%"; 
+    target.hidden = false; 
+  } 
 }

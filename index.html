@@ -50,12 +50,13 @@
       <div class="menu">
         <span id="search-query"><input type="text" placeholder="Search..." /></span>
         <ul class="menu-list">
-          <li id="home">home</li>
+          <li id="home">Home</li>
+          <li id="inbox">Inbox</li>
           <li id="shared-List">Shared</li>
-          <li id="recently-Done">Recent</li>
           <li id="urgent-Task">Urgent</li>
+          <li id="all-lists">Lists</li>
+          <li id="recently-Done">Recent</li>
           <li id="settings">Settings</li>
-          <li id="user">User</li>
         </ul>
         <span id="tag-delete" class="material-symbols-outlined" title="Delete Tag" aria-label="Delete Tag">
           delete
@@ -66,9 +67,6 @@
           <span class="tag" id="untitled" draggable="true">Untitled</span>
           <span class="tag" id="personal" draggable="true">Personal</span>
           <span class="tag" id="work" draggable="true">Work</span>
-          <span class="tag" id="shared" draggable="true">Shared</span>
-          <span class="tag" id="recent" draggable="true">Recent</span>
-          <span class="tag" id="urgent" draggable="true">Urgent</span>
           <span class="tag" id="addTag" draggable="false">+</span>
         </div>
         <div class="row">
@@ -80,9 +78,27 @@
         </div>
       </div>
       <div class="page-setting" hidden>
-        <h3 style="color: var(--text);">Settings</h3>
+        <h3>Settings</h3>
+        <h2>User Profile</h2>
+        <div class="user-info">
+          <img id="profile-photo" src="images/default-avatar.png" alt="User Avatar" class="avatar">
+          <form action="POST" id="user-form">
+            <div class="input-group">
+              <input type="text" id="username" name="username" placeholder="Username">
+              <label for="password">Username</label>
+            </div>
+            <div class="input-group">
+              <input type="password" id="password" name="password" placeholder="Password">
+              <label for="password">Password</label>
+            </div>
+            <div class="form-btns">
+              <button type="submit" class="form-btn">Log In</button>
+              <button type="button" class="form-btn" onclick="showPage('page-SignUp')">Sign Up</button>
+            </div>
+          </form>
+        </div>
+        <h2>Choose Themes</h2>
         <div class="themes">
-          <h2 style="color: var(--text);">Choose Themes</h2>
           <div class="light-themes">
             <button class="theme-btn" data-theme="black">Black</button>
             <button class="theme-btn" data-theme="blue">Blue</button>
@@ -106,25 +122,21 @@
           <div class="data-settings-btns">
             <button id="page-setting-btn" onclick="clearTasks()">Clear All Tasks</button>
             <button id="page-setting-btn" onclick="exportTasks()">Export Tasks</button>
+            <button id="page-setting-btn" onclick="importTasks()">Import Tasks</button>
+            <button id="page-setting-btn" onclick="showage()">Forgot Username/Password</button>
           </div>
         </div>
-      </div>
-      <div class="page-user" hidden>
-        <h2>User Profile</h2>
-        <div class="user-info">
-          <img id="profile-photo" src="images/default-avatar.png" alt="User Avatar" class="avatar">
-          <form action="POST" id="user-form">
-            <label for="username" style="color: var(--text);">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username">
-            <br>
-            <label for="email" style="color: var(--text);">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email">
-            <br>
-            <button type="submit">Log In</button>
-            <button type="button">Sign Up</button>
-            <input type="file" id="photo-upload" accept="image/*">
-          </form>
+        <div class="about">
+
         </div>
+      </div>
+      <div class="page-SignUp" hidden>
+        <form action="POST" class="user-SignUp">
+          <h2> Sign Up</h2>
+          <input type="email" id="email" placeholder="Email">
+          <input type="password" id="password" placeholder="Password">
+          <button type="submit" class="form-btn">Sign Up</button>
+        </form>
       </div>
     </section>
   </main>
