@@ -48,7 +48,6 @@ class Application {
   }
 
   setupUIListeners() {
-
     const themeToggle = document.getElementById("theme-toggle");
     if (themeToggle) {
       themeToggle.addEventListener("click", () => {
@@ -56,6 +55,20 @@ class Application {
       });
     }
 
+    const signupBtn = document.getElementById("signup-btn");
+    const loginBtn = document.getElementById("login-btn");
+    if (signupBtn) {
+      signupBtn.addEventListener("click", () => {
+        document.querySelector(".logIn").hidden = true;
+        document.querySelector(".signUp").hidden = false;
+      });
+    }
+    if (loginBtn) {
+      loginBtn.addEventListener("click", () => {
+        document.querySelector(".signUp").hidden = true;
+        document.querySelector(".logIn").hidden = false;
+      });
+    }
     const searchInput = document.querySelector("#search-query input");
     if (searchInput) {
       searchInput.addEventListener("input", (e) => {
@@ -95,25 +108,23 @@ class Application {
     switch (menuId) {
       case "home":
         this.tags.selectTag("untitled");
-        addEventListener("click", () => { 
-          showPage("page-home");})
-        break;
-      case "shared-List":
-        this.tags.selectTag("shared");
         addEventListener("click", () => {
           showPage("page-home");
+        });
+        break;
+      case "shared-List":
+        addEventListener("click", () => {
+          showPage("page-shared-List");
         });
         break;
       case "recently-Done":
-        this.tags.selectTag("recent");
         addEventListener("click", () => {
           showPage("page-home");
         });
         break;
-      case "urgent-Task":
-        this.tags.selectTag("urgent");
+      case "userProfile":
         addEventListener("click", () => {
-          showPage("page-home");
+          showPage("page-userProfile");
         });
         break;
       case "settings":
@@ -121,11 +132,7 @@ class Application {
           showPage("page-setting");
         });
         break;
-      case "user":
-        this.tags.selectTag("user");
-        addEventListener("click", () => {
-          showPage("page-user").style.width = "80%";
-        });
+      case "":
         break;
     }
   }

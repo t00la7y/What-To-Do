@@ -36,11 +36,44 @@ class TaskComponent {
     this.renderTasks();
   }
 
+  voiceTasks() {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Sorry, your browser does not support voice recognition.");
+      return;
+    }
+    const recognition = new SpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    const addBtn = document.getElementById("add-task");
+    recognition.onstart = () => {
+      addBtn.innerHTML = '<i class="fa-solid fa-microphone"></i>';
+      toast.info("Listening... Speak your task");
+    };
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript.trim();
+      if (transcript) {
+        this.addTask(transcript);
+        toast.success(`Task added: "${transcript}"`);
+      }
+    };
+    recognition.onerror = (event) => {
+      toast.error(`Voice error: ${event.error}`);
+    };
+    recognition.onend = () => {
+      addBtn.innerHTML = "Add";
+      toast.info("Voice input ended");
+    };
+    recognition.start();
+  }
+
   addTask(taskText = null) {
     const text = (taskText || this.inputBox.value).trim();
 
     if (!text) {
-      alert("Please enter a task");
+      this.voiceTasks();
       return false;
     }
 

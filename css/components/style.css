@@ -3,7 +3,7 @@
 :root,
 :root.dark-mode.light-mode {
   --primary-bg: hsl(0, 0%, 90%);
-  --secondary-bg: hsl(220, 9%, 84%);
+  --secondary-bg: hsl(220, 9%, 64%);
   --text: hsl(0, 0%, 5%);
   --text-light: hsl(0, 0%, 33%);
   --gray-hover: hsl(0, 0%, 73%);
@@ -227,7 +227,6 @@ body {
 }
 
 .page-setting {
-  height: 30rem;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: thin;
@@ -516,16 +515,20 @@ ul {
 .menu-list {
   display: flex;
   flex-direction: column;
+  align-items: start;
   gap: 0.2rem;
   z-index: 1;
   width: 20%;
 }
 
 .menu-list li {
-  padding: 0.3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
   width: 10%;
   color: var(--text);
-
+  gap: 0.5rem;
 }
 
 .menu-list li:hover {
@@ -608,113 +611,136 @@ footer {
   opacity: 0.5;
 }
 
-.user-info {
+.page-userProfile {
+  overflow: hidden;
+}
+
+.page-userProfile .logIn {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
-  gap: 5rem;
-  margin-top: 2rem;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-bg);
 }
 
-.avatar {
-  width: 11.25rem;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--accent);
-  background-color: var(--secondary-bg) !important;
-}
-
-.user-info {
-  display: flex;
-  justify-content: start;
-  padding-left: 10rem;
-  flex: 1 1 0;
-}
-
-.user-info #user-form {
+.page-userProfile .logIn form {
+  width: 40%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex: 1 1 auto;
+  align-items: center;
   gap: 1rem;
-}
-
-.input-group {
-  position: relative;
-  width: 12rem;
-}
-
-.input-group input {
-  all: unset;
-  height: 2rem;
-  width: 100%;
-  border-radius: 0.325rem;
-  border: 1px solid var(--accent);
   background-color: var(--secondary-bg);
-  padding: 0.5rem;
+  border-radius: 1.5rem;
+}
+
+.page-userProfile .logIn form a {
+  all: unset;
+  font-size: 1.025rem;
+  font-weight: 500;
+  font-family: 'Poppins', 'sans-serif';
+  color: var(--gray-hover);
+}
+
+.page-userProfile .logIn form a:hover {
+  cursor: pointer;
+  color: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+.page-userProfile .logIn form .input-box {
+  background-color: var(--primary-bg);
+  padding-left: 1rem;
+  border-radius: 1rem;
+  width: 16rem;
+}
+
+.page-userProfile .logIn form .input-box:hover {
+  box-shadow: 0 0 10px 2px var(--accent);
+  transform: scale(1.05);
+}
+
+.page-userProfile .logIn form .input-box i {
   color: var(--text);
 }
 
-.input-group label {
-  position: absolute;
-  left: 0.5rem;
-  top: 0.5rem;
-  color: var(--text-light);
-  pointer-events: none;
-  transition: 0.3s ease;
-  background: var(--secondary-bg);
-  padding: 0 0.2rem;
+.page-userProfile .logIn form .input-box input {
+  border-left: 1px solid var(--gray-hover);
+  margin: 0.25rem;
 }
 
-.input-group input:focus+label,
-.input-group input:not(:placeholder-shown)+label {
-  top: -0.7rem;
-  left: 0.4rem;
-  font-size: 0.8rem;
-  color: var(--accent);
-}
-
-.user-info #user-form .form-btns {
+.page-userProfile .logIn form .form-btns {
   display: flex;
-  flex-direction: row;
-  justify-content: start;
-  gap: 1rem;
-  flex: 1 1 auto;
+  gap: 0.5rem;
+  width: 16rem;
 }
 
-.user-info #user-form .form-btns .form-btn {
+.page-userProfile .logIn form .form-btns button {
   all: unset;
-  height: 2rem;
-  width: 4rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  background: var(--accent);
-  color: var(--primary-bg);
+  border-radius: 1rem;
+  padding: 1rem;
+  font-family: 'Poppins', 'sans-serif';
+  font-weight: 500;
+  font-size: 1.025rem;
+  text-align: center;
   cursor: pointer;
-  white-space: nowrap;
 }
 
-.user-info #user-form .form-btns .form-btn:hover {
-  background-color: var(--accent-hover);
+.page-userProfile .logIn form .form-btns button[type="submit"] {
+  flex: 2;
+  background-color: var(--accent);
+  color: var(--secondary-bg);
 }
 
-.page-SignUp {
-  display: none;
-  flex-direction: column;
+.page-userProfile .logIn form .form-btns button[type="submit"]:hover {
+  box-shadow: 0 0 10px 2px var(--accent);
+  transform: scale(1.05);
+}
+
+.page-userProfile .logIn form .form-btns #signup-btn {
+  background-color: var(--primary-bg);
+  color: var(--accent);
+  flex: 1;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.page-userProfile .logIn form .form-btns #signup-btn:hover {
+  box-shadow: 0 0 10px 2px var(--accent);
+  transform: scale(1.05);
+}
+
+.page-userProfile .logIn form .form-btns #login-btn {
+  background-color: var(--primary-bg);
+  color: var(--accent);
+  flex: 1;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.page-userProfile .logIn form .form-btns #login-btn:hover {
+  box-shadow: 0 0 10px 2px var(--accent);
+  transform: scale(1.05);
+}
+
+.page-userProfile .signUp {
+  display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-bg);
 }
 
-.page-SignUp .user-SignUp {
+.page-userProfile .signUp form {
+  width: 40%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   background-color: var(--secondary-bg);
-  width: 60%;
-  height: 80%;
-  padding: 2rem;
+  border-radius: 1.5rem;
 }

@@ -143,16 +143,39 @@ function unique(array, key = null) {
   });
 }
 
-function showPage(pageClass) { 
-  const pages = document.querySelectorAll('[class^="page-"]'); 
-  
-  pages.forEach(page => { page.hidden = true; page.style.display = "none"; }); 
-  
-  const target = document.querySelector(`.${pageClass}`); 
-  if (target) { 
-    target.style.display = pageClass === "page-SignUp" ? "flex" : "Block"; 
-    target.style.height = "30rem"; 
-    target.style.width = "80%"; 
-    target.hidden = false; 
-  } 
+function showPage(pageClass) {
+  const pages = document.querySelectorAll('[class^="page-"]');
+
+  pages.forEach((page) => {
+    page.hidden = true;
+    page.hidden = "true";
+  });
+
+  const target = document.querySelector(`.${pageClass}`);
+  if (target) {
+    target.hidden = false;
+    target.style.height = "30rem";
+    target.style.width = "80%";
+  }
+}
+
+function setFontSize(str) {
+  switch (str) {
+    case "small":
+      document.documentElement.style.fontSize = "12px";
+      toast.info("Font size set to Small");
+      break;
+    case "medium":
+      document.documentElement.style.fontSize = "16px";
+      toast.info("Font size set to Medium");
+      break;
+    case "large":
+      document.documentElement.style.fontSize = "20px";
+      toast.info("Font size set to Large");
+      break;
+    default:
+      document.documentElement.style.fontSize = "16px";
+      toast.warning("Invalid option. Defaulting to Medium");
+      break;
+  }
 }

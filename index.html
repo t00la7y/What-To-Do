@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="keywords" content="to-do list, task manager, productivity, JavaScript, HTML, CSS" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="icon" href="images/notepad.png" type="image/png" />
 
@@ -48,20 +50,19 @@
   <main>
     <section class="todo-app">
       <div class="menu">
-        <span id="search-query"><input type="text" placeholder="Search..." /></span>
         <ul class="menu-list">
-          <li id="home">Home</li>
-          <li id="inbox">Inbox</li>
-          <li id="shared-List">Shared</li>
-          <li id="urgent-Task">Urgent</li>
-          <li id="all-lists">Lists</li>
-          <li id="recently-Done">Recent</li>
-          <li id="settings">Settings</li>
+          <li id="home"><i class="bx bx-home"></i>Home</li>
+          <li id="inbox"><i class="fa-solid fa-inbox"></i>Inbox</li>
+          <li id="shared-List"><i class='bx  bx-group'></i>Shared</li>
+          <li id="all-lists"><i class='bx  bx-task'></i>Lists</li>
+          <li id="recently-Done"><i class='bx  bx-history'></i>Recent</li>
+          <li id="userProfile"><i class="bx bx-user-circle"></i>Account</li>
+          <li id="settings"><i class='bx  bx-cog'></i>Settings</li>
         </ul>
-        <span id="tag-delete" class="material-symbols-outlined" title="Delete Tag" aria-label="Delete Tag">
-          delete
-        </span>
+        <i class="fa-solid fa-trash" id="tag-delete"></i>
       </div>
+
+
       <div class="page-home">
         <div class="list-type">
           <span class="tag" id="untitled" draggable="true">Untitled</span>
@@ -71,32 +72,32 @@
         </div>
         <div class="row">
           <input type="text" id="input-box" placeholder="Add your text" aria-label="task Input">
-          <button onclick="addTask()" aria-label="Add Task">Add</button>
+          <button id="add-task" onclick="addTask()" aria-label="Add Task">Add</button>
         </div>
         <div class="tag-content">
           <ul id="list-container"></ul>
         </div>
       </div>
-      <div class="page-setting" hidden>
-        <h3>Settings</h3>
-        <h2>User Profile</h2>
-        <div class="user-info">
-          <img id="profile-photo" src="images/default-avatar.png" alt="User Avatar" class="avatar">
-          <form action="POST" id="user-form">
-            <div class="input-group">
-              <input type="text" id="username" name="username" placeholder="Username">
-              <label for="password">Username</label>
-            </div>
-            <div class="input-group">
-              <input type="password" id="password" name="password" placeholder="Password">
-              <label for="password">Password</label>
-            </div>
-            <div class="form-btns">
-              <button type="submit" class="form-btn">Log In</button>
-              <button type="button" class="form-btn" onclick="showPage('page-SignUp')">Sign Up</button>
-            </div>
-          </form>
+
+
+      <div class="page-shared-List" hidden>
+        <span id="search-query"><input type="text" placeholder="Search..." /></span>
+        <div class="list-card">
+          <h3 class="title"></h3>
+          <p2 class="describtion"></p2>
+          <div>
+            <h2 class="list-editors"></h2>
+            <span class="editor-avatar"></span>
+          </div>
+          <ul id="list-container"></ul>
         </div>
+      </div>
+
+
+      <div class="page-setting" hidden>
+
+        <h3>Settings</h3>
+
         <h2>Choose Themes</h2>
         <div class="themes">
           <div class="light-themes">
@@ -109,6 +110,7 @@
             <button class="theme-btn" data-theme="red">Red</button>
           </div>
         </div>
+
         <div class="font-settings">
           <h2 style="color: var(--text);">Font Size</h2>
           <div class="font-settings-btns">
@@ -117,26 +119,63 @@
             <button id="page-setting-btn" onclick="setFontSize('large')">Large</button>
           </div>
         </div>
+
         <div class="data-settings">
           <h2 style="color: var(--text);">Data</h2>
           <div class="data-settings-btns">
             <button id="page-setting-btn" onclick="clearTasks()">Clear All Tasks</button>
             <button id="page-setting-btn" onclick="exportTasks()">Export Tasks</button>
             <button id="page-setting-btn" onclick="importTasks()">Import Tasks</button>
-            <button id="page-setting-btn" onclick="showage()">Forgot Username/Password</button>
           </div>
         </div>
         <div class="about">
-
         </div>
       </div>
-      <div class="page-SignUp" hidden>
-        <form action="POST" class="user-SignUp">
-          <h2> Sign Up</h2>
-          <input type="email" id="email" placeholder="Email">
-          <input type="password" id="password" placeholder="Password">
-          <button type="submit" class="form-btn">Sign Up</button>
-        </form>
+
+
+      <div class="page-userProfile" hidden>
+        <div class="logIn">
+          <form action="POST">
+            <h2 class="userProfile-heading">Hi, <span style="color: var(--accent);">Welcome Back</span>!</h2>
+            <div class="input-box">
+              <i class="fa-regular fa-user"></i>
+              <input type="text" name="username" id="userName" placeholder="Username" required>
+            </div>
+            <div class="input-box">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" name="password" id="passWord" placeholder="Password" required>
+            </div>
+            <a href="#">Forgot Password</a>
+            <div class="form-btns">
+              <button type="submit">Log In</button>
+              <button id="signup-btn" type="button">Sign Up</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="signUp" >
+          <form action="POST">
+            <h2 class="userProfile-heading">Hello, <span style="color: var(--accent);">Welcome</span>!</h2>
+            <div class="input-box">
+              <i class="fa-solid fa-at"></i>
+              <input type="text" name="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="input-box">
+              <i class="fa-regular fa-user"></i>
+              <input type="text" name="username" id="userName" placeholder="Username" required>
+            </div>
+            <div class="input-box">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" name="password" id="passWord" placeholder="Password" required>
+            </div>
+            <div class="form-btns">
+              <button type="submit">Sign Up</button>
+              <button id="login-btn">Log In</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
       </div>
     </section>
   </main>
