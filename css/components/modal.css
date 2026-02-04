@@ -1,0 +1,199 @@
+/* Modal and Form Component Styles */
+
+/* Reusable Input Box Styles */
+.input-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-bg);
+  padding-left: 1rem;
+  border-radius: 1rem;
+  width: 16rem;
+  gap: 0.5rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.input-box:hover {
+  box-shadow: 0 0 10px 2px var(--accent);
+  transform: scale(1.05);
+}
+
+.input-box i {
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.input-box input {
+  border-left: 1px solid var(--gray-hover);
+  margin: 0.25rem;
+  flex: 1;
+}
+
+/* Reusable Form Button Styles */
+.form-btns {
+  display: flex;
+  gap: 0.5rem;
+  width: 16rem;
+}
+
+.form-btns button {
+  all: unset;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-family: 'Poppins', 'sans-serif';
+  font-weight: 500;
+  font-size: 1.025rem;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.form-btns button[type="submit"] {
+  flex: 2;
+  background-color: var(--accent);
+  color: var(--secondary-bg);
+}
+
+.form-btns button[type="submit"]:hover {
+  box-shadow: 0 0 10px 2px var(--accent);
+  transform: scale(1.05);
+}
+
+.form-btns button[type="button"] {
+  flex: 1;
+  background-color: var(--primary-bg);
+  color: var(--accent);
+}
+
+.form-btns button[type="button"]:hover {
+  box-shadow: 0 0 10px 2px var(--accent);
+  transform: scale(1.05);
+}
+
+/* Modal Container Styles */
+.modal-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-bg);
+}
+
+.modal-form {
+  min-width: 40%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--secondary-bg);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.modal-form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Modal Heading Styles */
+.modal-heading {
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.modal-heading .accent {
+  color: var(--accent);
+}
+
+/* Modal Link Styles */
+.modal-link {
+  all: unset;
+  font-size: 1.025rem;
+  font-weight: 500;
+  font-family: 'Poppins', 'sans-serif';
+  color: var(--gray-hover);
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-link:hover {
+  color: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+/* User Profile Page Specific Styles */
+.page-userProfile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.page-userProfile .logIn {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-bg);
+}
+
+.page-userProfile .logIn form {
+  min-width: 40%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--secondary-bg);
+  border-radius: 1.5rem;
+  padding: 2rem;
+}
+
+.page-userProfile .logIn form a {
+  all: unset;
+  font-size: 1.025rem;
+  font-weight: 500;
+  font-family: 'Poppins', 'sans-serif';
+  color: var(--gray-hover);
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.page-userProfile .logIn form a:hover {
+  color: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+.page-userProfile .signUp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-bg);
+}
+
+.page-userProfile .signUp form {
+  width: 40%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--secondary-bg);
+  border-radius: 1.5rem;
+  padding: 2rem;
+}

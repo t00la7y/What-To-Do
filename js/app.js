@@ -5,6 +5,10 @@ class Application {
     this.tags = null;
     this.tasks = null;
     this.toast = null;
+    this.recentlyDone = null;
+    this.allLists = null;
+    this.inbox = null;
+    this.tagModal = null;
     this.init();
   }
 
@@ -23,7 +27,12 @@ class Application {
         this.storage,
       );
 
-      this.toast = toast;
+        this.toast = toast;
+
+        this.recentlyDone = new RecentlyDoneComponent("#recently-done-list", this.storage);
+        this.allLists = new AllListsComponent("#all-tasks-list", this.storage);
+        this.inbox = new InboxComponent("#invitations-list", this.storage);
+        this.tagModal = new TagModalComponent(this.storage);
 
       this.setupComponentBindings();
 
@@ -55,20 +64,6 @@ class Application {
       });
     }
 
-    const signupBtn = document.getElementById("signup-btn");
-    const loginBtn = document.getElementById("login-btn");
-    if (signupBtn) {
-      signupBtn.addEventListener("click", () => {
-        document.querySelector(".logIn").hidden = true;
-        document.querySelector(".signUp").hidden = false;
-      });
-    }
-    if (loginBtn) {
-      loginBtn.addEventListener("click", () => {
-        document.querySelector(".signUp").hidden = true;
-        document.querySelector(".logIn").hidden = false;
-      });
-    }
     const searchInput = document.querySelector("#search-query input");
     if (searchInput) {
       searchInput.addEventListener("input", (e) => {
@@ -108,40 +103,38 @@ class Application {
     switch (menuId) {
       case "home":
         this.tags.selectTag("untitled");
-        addEventListener("click", () => {
-          showPage("page-home");
-        });
+        showPage("page-home");
+        break;
+      case "inbox":
+        this.inbox.refresh();
+        showPage("page-inbox");
         break;
       case "shared-List":
-        addEventListener("click", () => {
-          showPage("page-shared-List");
-        });
+        showPage("page-shared-List");
+        break;
+      case "all-lists":
+        this.allLists.refresh();
+        showPage("page-all-lists");
         break;
       case "recently-Done":
-        addEventListener("click", () => {
-          showPage("page-home");
-        });
+        this.recentlyDone.loadRecentlyDone();
+        this.recentlyDone.renderRecentlyDone();
+        showPage("page-recently-done");
         break;
       case "userProfile":
-        addEventListener("click", () => {
-          showPage("page-userProfile");
-        });
+        showPage("page-userProfile");
         break;
       case "settings":
-        addEventListener("click", () => {
-          showPage("page-setting");
-        });
+        showPage("page-setting");
         break;
-      case "":
+      default:
         break;
     }
   }
 
   loadInitialState() {
-    const firstTag = Object.keys(this.tags.tags)[0];
-    if (firstTag) {
-      this.tags.selectTag(firstTag);
-    }
+    this.tags.selectTag("untitled");
+    showPage("page-home");
   }
 }
 

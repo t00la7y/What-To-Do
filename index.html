@@ -8,17 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="keywords" content="to-do list, task manager, productivity, JavaScript, HTML, CSS" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="icon" href="images/notepad.png" type="image/png" />
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/components/style.css" />
 
   <!-- Component Stylesheets -->
+  <link rel="stylesheet" href="css/components/modal.css" />
   <link rel="stylesheet" href="css/components/toast.css" />
-  <link rel="stylesheet" href="css/components/style.css" />
+  <link rel="stylesheet" href="css/components/pages.css" />
 
   <!-- Service Scripts -->
   <script src="js/services/storageService.js" defer></script>
@@ -32,6 +32,11 @@
   <script src="js/components/TaskComponent.js" defer></script>
   <script src="js/components/ToastComponent.js" defer></script>
   <script src="js/components/SearchComponent.js" defer></script>
+  <script src="js/components/UserComponent.js" defer></script>
+  <script src="js/components/RecentlyDoneComponent.js" defer></script>
+  <script src="js/components/AllListsComponent.js" defer></script>
+  <script src="js/components/InboxComponent.js" defer></script>
+  <script src="js/components/TagModalComponent.js" defer></script>
 
   <!-- Main Application Script -->
   <script src="js/app.js" defer></script>
@@ -51,20 +56,20 @@
     <section class="todo-app">
       <div class="menu">
         <ul class="menu-list">
-          <li id="home"><i class="bx bx-home"></i>Home</li>
+          <li id="home"><i class="fa-solid fa-house"></i>Home</li>
           <li id="inbox"><i class="fa-solid fa-inbox"></i>Inbox</li>
-          <li id="shared-List"><i class='bx  bx-group'></i>Shared</li>
-          <li id="all-lists"><i class='bx  bx-task'></i>Lists</li>
-          <li id="recently-Done"><i class='bx  bx-history'></i>Recent</li>
-          <li id="userProfile"><i class="bx bx-user-circle"></i>Account</li>
-          <li id="settings"><i class='bx  bx-cog'></i>Settings</li>
+          <li id="shared-List"><i class="fa-solid fa-users"></i>Shared</li>
+          <li id="all-lists"><i class="fa-solid fa-list-check"></i>Lists</li>
+          <li id="recently-Done"><i class="fa-solid fa-history"></i>Recent</li>
+          <li id="userProfile"><i class="fa-solid fa-circle-user"></i>Account</li>
+          <li id="settings"><i class="fa-solid fa-gear"></i>Settings</li>
         </ul>
-        <i class="fa-solid fa-trash" id="tag-delete"></i>
       </div>
 
 
       <div class="page-home">
         <div class="list-type">
+          <span class="tag"><i class="fa-solid fa-trash" id="tag-delete"></i></span>
           <span class="tag" id="untitled" draggable="true">Untitled</span>
           <span class="tag" id="personal" draggable="true">Personal</span>
           <span class="tag" id="work" draggable="true">Work</span>
@@ -81,8 +86,19 @@
 
 
       <div class="page-shared-List" hidden>
-        <span id="search-query"><input type="text" placeholder="Search..." /></span>
-        <div class="list-card">
+        <div class="sharedListHeader">
+          <div class="searchSharedList">
+            <span id="search-query"><input type="text" placeholder="Search Friends..." /></span>
+            <span id="shared-list-users"></span>
+          </div>
+          <div class="createSharedList">
+            <span ><input type="text" placeholder="Create Shared List..." />
+              <button><i class="fa-solid fa-plus"></i></button></span>
+          </div>
+          <button class="friends"><i class="fa-solid fa-users"></i></button>
+        </div>
+        <div class="sharedListBody">
+          <div class="list-card">
           <h3 class="title"></h3>
           <p2 class="describtion"></p2>
           <div>
@@ -90,6 +106,7 @@
             <span class="editor-avatar"></span>
           </div>
           <ul id="list-container"></ul>
+        </div>
         </div>
       </div>
 
@@ -132,45 +149,72 @@
         </div>
       </div>
 
+      <div class="page-recently-done" hidden>
+        <h2 style="color: var(--text); padding: 2rem;">Recently Completed Tasks</h2>
+        <div class="recently-done-container">
+          <ul id="recently-done-list"></ul>
+        </div>
+      </div>
+
+      <div class="page-all-lists" hidden>
+        <h2 style="color: var(--text); padding: 2rem;">All Tasks from All Lists</h2>
+        <div class="all-lists-container">
+          <ul id="all-tasks-list"></ul>
+        </div>
+      </div>
+
+      <div class="page-inbox" hidden>
+        <h2 style="color: var(--text); padding: 2rem;">Invitations</h2>
+        <div class="inbox-container">
+          <ul id="invitations-list"></ul>
+        </div>
+      </div>
+
 
       <div class="page-userProfile" hidden>
         <div class="logIn">
-          <form action="POST">
+          <form aria-label="Login form">
             <h2 class="userProfile-heading">Hi, <span style="color: var(--accent);">Welcome Back</span>!</h2>
             <div class="input-box">
-              <i class="fa-regular fa-user"></i>
-              <input type="text" name="username" id="userName" placeholder="Username" required>
+              <i class="fa-regular fa-user" aria-hidden="true"></i>
+              <input type="text" name="username" id="userName" placeholder="Username" required
+                aria-label="Username input">
             </div>
             <div class="input-box">
-              <i class="fa-solid fa-lock"></i>
-              <input type="password" name="password" id="passWord" placeholder="Password" required>
+              <i class="fa-solid fa-lock" aria-hidden="true"></i>
+              <input type="password" name="password" id="userPassword" placeholder="Password" required
+                aria-label="Password input">
             </div>
-            <a href="#">Forgot Password</a>
+            <a href="#" aria-label="Forgot password link">Forgot Password</a>
             <div class="form-btns">
-              <button type="submit">Log In</button>
-              <button id="signup-btn" type="button">Sign Up</button>
+              <button type="submit" aria-label="Submit login form">Log In</button>
+              <button id="signup-btn" type="button" onclick="toggleSignUp()" aria-label="Switch to signup form">Sign
+                Up</button>
             </div>
           </form>
         </div>
 
-        <div class="signUp" >
-          <form action="POST">
+        <div class="signUp">
+          <form aria-label="Signup form">
             <h2 class="userProfile-heading">Hello, <span style="color: var(--accent);">Welcome</span>!</h2>
             <div class="input-box">
-              <i class="fa-solid fa-at"></i>
-              <input type="text" name="email" id="email" placeholder="Email" required>
+              <i class="fa-solid fa-at" aria-hidden="true"></i>
+              <input type="email" name="email" id="email" placeholder="Email" required aria-label="Email input">
             </div>
             <div class="input-box">
-              <i class="fa-regular fa-user"></i>
-              <input type="text" name="username" id="userName" placeholder="Username" required>
+              <i class="fa-regular fa-user" aria-hidden="true"></i>
+              <input type="text" name="username" id="signupUserName" placeholder="Username" required
+                aria-label="Username input">
             </div>
             <div class="input-box">
-              <i class="fa-solid fa-lock"></i>
-              <input type="password" name="password" id="passWord" placeholder="Password" required>
+              <i class="fa-solid fa-lock" aria-hidden="true"></i>
+              <input type="password" name="password" id="signupPassword" placeholder="Password" required
+                aria-label="Password input">
             </div>
             <div class="form-btns">
-              <button type="submit">Sign Up</button>
-              <button id="login-btn">Log In</button>
+              <button type="submit" aria-label="Submit signup form">Sign Up</button>
+              <button id="login-btn" type="button" onclick="toggleLogIn()" aria-label="Switch to login form">Log
+                In</button>
             </div>
           </form>
         </div>
@@ -182,8 +226,6 @@
   <footer>
     <h4>© 2026 What-To-Do. All rights reserved.</h4>
   </footer>
-  <script>
-  </script>
 </body>
 
 </html>

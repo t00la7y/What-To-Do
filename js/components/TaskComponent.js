@@ -40,33 +40,56 @@ class TaskComponent {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      alert("Sorry, your browser does not support voice recognition.");
+      if (window.toast) {
+        toast.error("Your browser does not support voice recognition.");
+      } else {
+        alert("Sorry, your browser does not support voice recognition.");
+      }
       return;
     }
     const recognition = new SpeechRecognition();
     recognition.lang = "en-US";
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
+    recognition.continuous = false;
+    
     const addBtn = document.getElementById("add-task");
+    let isListening = false;
+
     recognition.onstart = () => {
-      addBtn.innerHTML = '<i class="fa-solid fa-microphone"></i>';
-      toast.info("Listening... Speak your task");
+      isListening = true;
+      if (addBtn) addBtn.innerHTML = '<i class="fa-solid fa-microphone" style="color: red;"></i>';
+      if (window.toast) toast.info("Listening... Speak your task");
     };
+
     recognition.onresult = (event) => {
-      const transcript = event.results[0][0].transcript.trim();
-      if (transcript) {
-        this.addTask(transcript);
-        toast.success(`Task added: "${transcript}"`);
+      if (event.results && event.results.length > 0) {
+        const transcript = event.results[event.results.length - 1][0].transcript.trim();
+        if (transcript) {
+          this.inputBox.value = transcript;
+          this.addTask(transcript);
+          if (window.toast) toast.success(`Task added: "${transcript}"`);
+        }
       }
     };
+
     recognition.onerror = (event) => {
-      toast.error(`Voice error: ${event.error}`);
+      isListening = false;
+      console.error("Voice recognition error:", event.error);
+      if (window.toast) toast.error(`Voice error: ${event.error}`);
     };
+
     recognition.onend = () => {
-      addBtn.innerHTML = "Add";
-      toast.info("Voice input ended");
+      isListening = false;
+      if (addBtn) addBtn.innerHTML = "Add";
     };
-    recognition.start();
+
+    try {
+      recognition.start();
+    } catch (error) {
+      console.error("Failed to start voice recognition:", error);
+      if (window.toast) toast.error("Failed to start voice recognition");
+    }
   }
 
   addTask(taskText = null) {

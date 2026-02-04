@@ -148,13 +148,14 @@ function showPage(pageClass) {
 
   pages.forEach((page) => {
     page.hidden = true;
-    page.hidden = "true";
+    page.style.display = "none";
   });
 
   const target = document.querySelector(`.${pageClass}`);
   if (target) {
     target.hidden = false;
-    target.style.height = "30rem";
+    target.style.display = "flex";
+    target.style.height = "auto";
     target.style.width = "80%";
   }
 }
@@ -177,5 +178,87 @@ function setFontSize(str) {
       document.documentElement.style.fontSize = "16px";
       toast.warning("Invalid option. Defaulting to Medium");
       break;
+  }
+}
+
+function clearTasks() {
+  if (confirm("Are you sure you want to clear all tasks? This cannot be undone.")) {
+    const storage = new StorageService("wtd_");
+    storage.clear();
+    location.reload();
+    toast.success("All tasks cleared");
+  }
+}
+
+function exportTasks() {
+  try {
+    const storage = new StorageService("wtd_");
+    const tasks = storage.get("tasks", {});
+    const dataStr = JSON.stringify(tasks, null, 2);
+    const dataBlob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `tasks-export-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    toast.success("Tasks exported successfully");
+  } catch (error) {
+    console.error("Export error:", error);
+    toast.error("Failed to export tasks");
+  }
+}
+
+function importTasks() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+  input.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const imported = JSON.parse(event.target.result);
+        const storage = new StorageService("wtd_");
+        storage.set("tasks", imported);
+        location.reload();
+        toast.success("Tasks imported successfully");
+      } catch (error) {
+        console.error("Import error:", error);
+        toast.error("Failed to import tasks. Invalid file format");
+      }
+    };
+    reader.readAsText(file);
+  });
+  input.click();
+}
+
+function addTask() {
+  if (window.app && window.app.tasks) {
+    window.app.tasks.addTask();
+  }
+}
+
+function toggleSignUp() {
+  document.querySelector(".page-userProfile .logIn").style.display = "none";
+  document.querySelector(".page-userProfile .signUp").style.display = "flex";
+}
+
+function toggleLogIn() {
+  document.querySelector(".page-userProfile .signUp").style.display = "none";
+  document.querySelector(".page-userProfile .logIn").style.display = "flex";
+}
+
+function sendInvitation(recipientUsername, listTitle, listId) {
+  if (window.app && window.app.inbox) {
+    const currentUser = localStorage.getItem("currentUsername") || "Anonymous";
+    window.app.inbox.addInvitation(currentUser, listTitle, listId);
+    if (window.toast) {
+      toast.success(`Invitation sent to ${recipientUsername}`);
+    }
   }
 }
