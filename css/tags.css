@@ -1,0 +1,33 @@
+/* Tag Container */
+.tag-container span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tag-label {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.tags {
+    margin: 0.25rem;
+    list-style: none;
+    border-radius: var(--font-xs);
+    background-color: var(--bg-dark);
+    padding: 0.25rem 0 0.15rem 0.75rem;
+}
+
+.tags li {
+    padding: var(--font-xs);
+    margin: 0.15rem 0.75rem 0.25rem 0;
+}
+
+.tags li:hover {
+    border-radius: var(--font-xs);
+    background-color: var(--bg);
+}

@@ -7,225 +7,289 @@
   <meta name="author" content="Mpilo Shezi ( t00la7y )" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="keywords" content="to-do list, task manager, productivity, JavaScript, HTML, CSS" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=label" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link rel="icon" href="images/notepad.png" type="image/png" />
-
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/components/style.css" />
-
-  <!-- Component Stylesheets -->
-  <link rel="stylesheet" href="css/components/modal.css" />
-  <link rel="stylesheet" href="css/components/toast.css" />
-  <link rel="stylesheet" href="css/components/pages.css" />
-
-  <!-- Service Scripts -->
-  <script src="js/services/storageService.js" defer></script>
-  <script src="js/services/themeService.js" defer></script>
-
-  <!-- Utility Scripts -->
-  <script src="js/utils/helpers.js" defer></script>
-
-  <!-- Component Scripts -->
-  <script src="js/components/TagComponent.js" defer></script>
-  <script src="js/components/TaskComponent.js" defer></script>
-  <script src="js/components/ToastComponent.js" defer></script>
-  <script src="js/components/SearchComponent.js" defer></script>
-  <script src="js/components/UserComponent.js" defer></script>
-  <script src="js/components/RecentlyDoneComponent.js" defer></script>
-  <script src="js/components/AllListsComponent.js" defer></script>
-  <script src="js/components/InboxComponent.js" defer></script>
-  <script src="js/components/TagModalComponent.js" defer></script>
-
-  <!-- Main Application Script -->
-  <script src="js/app.js" defer></script>
+  <link rel="stylesheet" href="css/style.css">
   <title>What-To-Do</title>
 </head>
 
 <body>
-  <header>
-    <div class="header">
-      <h2>What-To-Do<img src="images/icon.png" alt="icon"></h2>
-      <span class="material-symbols-outlined data-theme" id="theme-toggle" class="switch">
-        table_lamp
-      </span>
-    </div>
-  </header>
+
   <main>
-    <section class="todo-app">
-      <div class="menu">
-        <ul class="menu-list">
-          <li id="home"><i class="fa-solid fa-house"></i>Home</li>
-          <li id="inbox"><i class="fa-solid fa-inbox"></i>Inbox</li>
-          <li id="shared-List"><i class="fa-solid fa-users"></i>Shared</li>
-          <li id="all-lists"><i class="fa-solid fa-list-check"></i>Lists</li>
-          <li id="recently-Done"><i class="fa-solid fa-history"></i>Recent</li>
-          <li id="userProfile"><i class="fa-solid fa-circle-user"></i>Account</li>
-          <li id="settings"><i class="fa-solid fa-gear"></i>Settings</li>
-        </ul>
+
+    <!-- Side Navigation panel -->
+    <aside class="desktop-nav">
+      <div class="account-action">
+        <img src="image/3c36493bb532231feea8f35fd29cca05.jpg" alt="user-Picture">
+        <span id="name">Mpilo</span>
       </div>
 
-
-      <div class="page-home">
-        <div class="list-type">
-          <span class="tag"><i class="fa-solid fa-trash" id="tag-delete"></i></span>
-          <span class="tag" id="untitled" draggable="true">Untitled</span>
-          <span class="tag" id="personal" draggable="true">Personal</span>
-          <span class="tag" id="work" draggable="true">Work</span>
-          <span class="tag" id="addTag" draggable="false">+</span>
-        </div>
-        <div class="row">
-          <input type="text" id="input-box" placeholder="Add your text" aria-label="task Input">
-          <button id="add-task" onclick="addTask()" aria-label="Add Task">Add</button>
-        </div>
-        <div class="tag-content">
-          <ul id="list-container"></ul>
-        </div>
-      </div>
-
-
-      <div class="page-shared-List" hidden>
-        <div class="sharedListHeader">
-          <div class="searchSharedList">
-            <span id="search-query"><input type="text" placeholder="Search Friends..." /></span>
-            <span id="shared-list-users"></span>
+      <nav>
+        <li><i class="fa-solid fa-house"></i>Home</li>
+        <li><i class="fa-solid fa-circle-plus"></i>New Note</li>
+        <li>
+          <div class="calendar-container">
+            <span>
+              <div class="calendar-label">
+                <i class="fa-solid fa-calendar-days"></i>
+                Calendar
+              </div>
+              <i class="fa-solid fa-angle-down" id="dropDown"></i>
+            </span>
+            <span id="month">March</span>
+            <table class="calendar-table">
+              <thead>
+                <tr>
+                  <th>Sun</th>
+                  <th>Mon</th>
+                  <th>Tue</th>
+                  <th>Wed</th>
+                  <th>Thu</th>
+                  <th>Fri</th>
+                  <th>Sat</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>10</td>
+                  <td>11</td>
+                  <td>12</td>
+                  <td>13</td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>15</td>
+                  <td>16</td>
+                  <td>17</td>
+                  <td>18</td>
+                  <td>19</td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <td>21</td>
+                  <td>22</td>
+                  <td>23</td>
+                  <td>24</td>
+                  <td>25</td>
+                  <td>26</td>
+                  <td>27</td>
+                </tr>
+                <tr>
+                  <td>28</td>
+                  <td>29</td>
+                  <td>30</td>
+                  <td>31</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="createSharedList">
-            <span ><input type="text" placeholder="Create Shared List..." />
-              <button><i class="fa-solid fa-plus"></i></button></span>
+        </li>
+        <li>
+          <div class="tag-container">
+            <span>
+              <div class="tag-label">
+                <span class="material-symbols-outlined">label</span>
+                Tags
+              </div>
+              <i class="fa-solid fa-angle-down" id="dropDown"></i>
+            </span>
+            <ul class="tags" id="tag-carousel">
+              <li id="tag">Project</li>
+              <li id="tag">Toiletries</li>
+              <li id="tag">Job</li>
+            </ul>
           </div>
-          <button class="friends"><i class="fa-solid fa-users"></i></button>
-        </div>
-        <div class="sharedListBody">
-          <div class="list-card">
-          <h3 class="title"></h3>
-          <p2 class="describtion"></p2>
-          <div>
-            <h2 class="list-editors"></h2>
-            <span class="editor-avatar"></span>
+        </li>
+        <li>
+          <div class="setting-div"><i class="fa-solid fa-gear"></i>Settings</div>
+        </li>
+      </nav>
+
+
+
+      <!-- web app footer -->
+      <footer>
+        <span class="author">Mpilo Shezi</span>
+        <span>&copy; 2026 What-To-Do</span>
+      </footer>
+
+    </aside>
+
+    <!-- Home page content -->
+    <section class="page-home">
+
+      <!-- Notes Carousel [Up to Down]-->
+      <section class="card-carousel">
+
+        <div class="carousel-header"> <!--Staionary at the top-->
+          <h3>What-To-Do</h3>
+
+          <!-- Hamburger menu -->
+          <div class="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
-          <ul id="list-container"></ul>
+
+          <!-- Mobile Navigation -->
+          <nav class="mobile-nav">
+            <ul class="mobile-nav-list">
+              <li><i class="fa-solid fa-house"></i>Home</li>
+              <li><i class="fa-solid fa-circle-plus"></i>New Note</li>
+              <li>
+                <div class="calendar-container">
+                  <span>
+                    <div class="calendar-label">
+                      <i class="fa-solid fa-calendar-days"></i>
+                      Calendar
+                    </div>
+                    <i class="fa-solid fa-angle-down" id="dropDown"></i>
+                  </span>
+                  <span id="month">March</span>
+                  <table class="calendar-table">
+                    <thead>
+                      <tr>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                      </tr>
+                      <tr>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                      </tr>
+                      <tr>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                      </tr>
+                      <tr>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                      </tr>
+                      <tr>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+              <li>
+                <div class="tag-container">
+                  <span>
+                    <div class="tag-label">
+                      <span class="material-symbols-outlined">label</span>
+                      Tags
+                    </div>
+                    <i class="fa-solid fa-angle-down" id="dropDown"></i>
+                  </span>
+                  <ul class="tags" id="tag-carousel">
+                    <li>Project</li>
+                    <li>Toiletries</li>
+                    <li>Job</li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="setting-div"><i class="fa-solid fa-gear"></i>Settings</div>
+              </li>
+            </ul>
+          </nav>
         </div>
-        </div>
-      </div>
 
+        <div class="carousel-group">
 
-      <div class="page-setting" hidden>
+          <!-- Make card with JavaScript -->
+          <div class="note-card"> <!--Placeholder-->
 
-        <h3>Settings</h3>
+            <h4 id="dateCreated">Today</h4>
 
-        <h2>Choose Themes</h2>
-        <div class="themes">
-          <div class="light-themes">
-            <button class="theme-btn" data-theme="black">Black</button>
-            <button class="theme-btn" data-theme="blue">Blue</button>
-            <button class="theme-btn" data-theme="gold">Gold</button>
-            <button class="theme-btn" data-theme="green">Green</button>
-            <button class="theme-btn" data-theme="orange">Orange</button>
-            <button class="theme-btn" data-theme="purple">Purple</button>
-            <button class="theme-btn" data-theme="red">Red</button>
+            <h2 class="note-title" id="card-title">
+              Finish What-To-Do
+            </h2>
+
+            <p id="card-description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+              ut aliquip ex ea commodo consequat.
+            </p>
+
+            <div class="note-tags">
+              <p class="note-tag" id="tag">Project</p>
+              <p class="note-tag" id="tag">Job</p>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="font-settings">
-          <h2 style="color: var(--text);">Font Size</h2>
-          <div class="font-settings-btns">
-            <button id="page-setting-btn" onclick="setFontSize('small')">Small</button>
-            <button id="page-setting-btn" onclick="setFontSize('medium')">Medium</button>
-            <button id="page-setting-btn" onclick="setFontSize('large')">Large</button>
-          </div>
+      <!-- Note/To-Do display -->
+      <section class="display">
+        <!-- New note -->
+        <div class="create-to-do">
+          <form></form>
         </div>
 
-        <div class="data-settings">
-          <h2 style="color: var(--text);">Data</h2>
-          <div class="data-settings-btns">
-            <button id="page-setting-btn" onclick="clearTasks()">Clear All Tasks</button>
-            <button id="page-setting-btn" onclick="exportTasks()">Export Tasks</button>
-            <button id="page-setting-btn" onclick="importTasks()">Import Tasks</button>
-          </div>
+        <!-- View Note -->
+        <div class="to-do-Note">
+          <h2 .class="title" id="card-title">Finish What-To-Do</h2>
         </div>
-        <div class="about">
-        </div>
-      </div>
-
-      <div class="page-recently-done" hidden>
-        <h2 style="color: var(--text); padding: 2rem;">Recently Completed Tasks</h2>
-        <div class="recently-done-container">
-          <ul id="recently-done-list"></ul>
-        </div>
-      </div>
-
-      <div class="page-all-lists" hidden>
-        <h2 style="color: var(--text); padding: 2rem;">All Tasks from All Lists</h2>
-        <div class="all-lists-container">
-          <ul id="all-tasks-list"></ul>
-        </div>
-      </div>
-
-      <div class="page-inbox" hidden>
-        <h2 style="color: var(--text); padding: 2rem;">Invitations</h2>
-        <div class="inbox-container">
-          <ul id="invitations-list"></ul>
-        </div>
-      </div>
-
-
-      <div class="page-userProfile" hidden>
-        <div class="logIn">
-          <form aria-label="Login form">
-            <h2 class="userProfile-heading">Hi, <span style="color: var(--accent);">Welcome Back</span>!</h2>
-            <div class="input-box">
-              <i class="fa-regular fa-user" aria-hidden="true"></i>
-              <input type="text" name="username" id="userName" placeholder="Username" required
-                aria-label="Username input">
-            </div>
-            <div class="input-box">
-              <i class="fa-solid fa-lock" aria-hidden="true"></i>
-              <input type="password" name="password" id="userPassword" placeholder="Password" required
-                aria-label="Password input">
-            </div>
-            <a href="#" aria-label="Forgot password link">Forgot Password</a>
-            <div class="form-btns">
-              <button type="submit" aria-label="Submit login form">Log In</button>
-              <button id="signup-btn" type="button" onclick="toggleSignUp()" aria-label="Switch to signup form">Sign
-                Up</button>
-            </div>
-          </form>
-        </div>
-
-        <div class="signUp">
-          <form aria-label="Signup form">
-            <h2 class="userProfile-heading">Hello, <span style="color: var(--accent);">Welcome</span>!</h2>
-            <div class="input-box">
-              <i class="fa-solid fa-at" aria-hidden="true"></i>
-              <input type="email" name="email" id="email" placeholder="Email" required aria-label="Email input">
-            </div>
-            <div class="input-box">
-              <i class="fa-regular fa-user" aria-hidden="true"></i>
-              <input type="text" name="username" id="signupUserName" placeholder="Username" required
-                aria-label="Username input">
-            </div>
-            <div class="input-box">
-              <i class="fa-solid fa-lock" aria-hidden="true"></i>
-              <input type="password" name="password" id="signupPassword" placeholder="Password" required
-                aria-label="Password input">
-            </div>
-            <div class="form-btns">
-              <button type="submit" aria-label="Submit signup form">Sign Up</button>
-              <button id="login-btn" type="button" onclick="toggleLogIn()" aria-label="Switch to login form">Log
-                In</button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      </div>
+      </section>
     </section>
+
   </main>
-  <footer>
-    <h4>© 2026 What-To-Do. All rights reserved.</h4>
-  </footer>
+
 </body>
 
 </html>

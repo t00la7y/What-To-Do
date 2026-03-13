@@ -1,0 +1,45 @@
+.note-card {
+    display: flex;
+    padding: 0.65rem 0 1rem 1rem;
+    flex-direction: column;
+    justify-content: start;
+    background-color: var(--bg-light);
+    border: none;
+}
+
+.note-title {
+    color: var(--text);
+    font-size: var(--font-l);
+    font-weight: bolder;
+}
+
+#card-description {
+    width: fit-content;
+    color: var(--text-muted);
+    font-size: var(--font-s);
+    font-weight: 600;
+    padding: 0.25rem 0.35rem 0.75rem 0;
+    flex-wrap: 0 0 auto;
+}
+
+.note-tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+
+#dateCreated {
+    color: var(--text-muted);
+}
+
+.note-tag {
+    width: fit-content;
+    font-size: var(--font-m);
+    color: var(--text);
+    border-radius: 0.25rem;
+    padding: 0.05rem 0.45rem;
+    background-color: var(--bg-dark);
+}

@@ -1,0 +1,62 @@
+/* Calendar Container */
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.calendar-container #month {
+    font-weight: 900;
+    font-size: var(--font-m);
+    align-self: end;
+}
+
+.calendar-container span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.calendar-label {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* Table styling */
+.calendar-table {
+    margin-top: 0.35rem;
+    padding-top: var(--font-s);
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: var(--font-s);
+}
+
+.calendar-table th,
+.calendar-table td {
+    border: 1px solid var(--bg-dark);
+    padding: 0.45rem;
+    height: 1rem;
+}
+
+.calendar-table th {
+    background-color: var(--bg);
+    color: var(--text);
+    font-weight: 600;
+}
+
+.calendar-table td {
+    background-color: var(--bg-light);
+    color: var(--text);
+}
+
+/* Hover effect for interactivity */
+.calendar-table td:hover {
+    background-color: var(--bg-dark);
+    cursor: pointer;
+}

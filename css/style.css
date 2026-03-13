@@ -1,0 +1,152 @@
+@import url(modal.css);
+@import url(calendar.css);
+@import url(tags.css);
+@import url(note.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.desktop-nav {
+    display: flex;
+    padding: 1rem;
+    color: var(--text);
+    flex-direction: column;
+    font-size: var(--font-m);
+    /* margin-right: var(--font-m); */
+    background-color: var(--bg);
+    font-family: var(--font-body);
+    justify-content: space-between;
+    
+}
+
+.desktop-nav .account-action {
+    gap: 0.5rem;
+    width: 10rem;
+    height: 4rem;
+    display: flex;
+    padding-left: 1rem;
+    align-self: center;
+    align-items: center;
+    flex-direction: row;
+    /* background-color: var(--bg-dark); */
+}
+
+.desktop-nav .account-action img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--bg-dark);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.desktop-nav .account-action #name {
+    font-size: var(--font-l);
+}
+
+.desktop-nav nav {
+    padding: 1rem 0 0 1rem;
+    list-style: none;
+}
+
+.desktop-nav nav li {
+    margin-bottom: var(--font-xs);
+}
+
+.setting-div {
+    align-self: center;
+}
+
+.note-card {
+    background-color: var(--bg-light);
+}
+
+/* SPA body */
+.page-home {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--bg-dark);
+    width: 1005;
+}
+
+.card-carousel {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-left: var(--font-m);
+    padding-right: var(--font-l);
+    width: 40%;
+}
+
+.carousel-header {
+    padding: 0.75rem 0 1rem 0;
+    font-size: var(--font-xl);
+    font-weight: 700;
+}
+
+.carousel-group .note-card {
+    border-radius: var(--font-m);
+}
+
+.display {
+    padding-top: 2rem;
+}
+
+
+
+
+
+/* Mobile Navigation */
+
+.hamburger-menu {
+    display: none;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+@media (max-width: 500px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 16px;
+        cursor: pointer;
+    }
+
+    .hamburger-menu span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: var(--text);
+        border-radius: 2px;
+    }
+
+    .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-light);
+        padding: 1rem;
+        z-index: 999;
+        transition: transform 0.3s ease;
+        transform: translateX(-100%);
+    }
+
+    .mobile-nav.open {
+        display: block;
+        opacity: 1;
+    }
+}
