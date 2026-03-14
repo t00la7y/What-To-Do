@@ -1,0 +1,93 @@
+.card-carousel {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-left: var(--font-m);
+    padding-right: var(--font-l);
+    background-color: var(--bg-dark);
+    height: 100%;
+}
+
+.carousel-list {
+    list-style: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+}
+
+.carousel-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.carousel-list #list-item {
+    margin-top: 1rem;
+    padding-bottom: 0.25rem;
+}
+
+.carousel-group {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+}
+
+.carousel-group::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.carousel-header {
+    font-weight: 700;
+    top: 0;
+    width: 100%;
+    position: relative;
+    padding: 0.75rem 0 1rem 0;
+    font-size: var(--font-xl);
+    background-color: var(--bg-dark);
+}
+
+.carousel-subheader {
+    display: flex;
+    font-size: var(--font-l);
+    font-family: var(--font-body);
+    align-items: center;
+    flex-direction: row;
+    padding-top: 0.35rem;
+    justify-content: space-between;
+}
+
+.carousel-subheader .list-filter {
+    gap: 0.15rem;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    justify-content: start;
+    background-color: var(--bg-dark);
+}
+
+.carousel-subheader .list-filter:hover {
+    color: var(--bg-light);
+}
+
+.carousel-subheader .list-filter span {
+    display: block;
+    height: 0.17rem;
+    background-color: var(--text);
+    border-radius: 1px;
+}
+
+.span-1 {
+    width: 0.95rem;
+}
+
+.span-2 {
+    width: 0.75rem;
+}
+
+.span-3 {
+    width: 0.55rem;
+}
+
+.carousel-group .note-card {
+    border-radius: var(--font-m);
+}

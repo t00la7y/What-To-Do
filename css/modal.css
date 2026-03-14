@@ -75,7 +75,7 @@ main {
     min-height: 99vh;
     border-radius: 1rem;
     grid-template-rows: 1fr auto;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 4fr; /* Removed aside from grid since it's fixed */
     background-color: var(--bg-light);
     overflow-y: hidden;
 }
@@ -105,10 +105,18 @@ h3 {
     color: var(--text);
 }
 
-.fa-solid {
-    padding: 0 1rem 0 0;
+button {
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--bg);
+    border-radius: var(--font-m);
 }
 
-.fa-angle-down {
-    justify-self: end;
+button:hover {
+    background-color: var(--bg-dark);
+}
+
+button .fa-plus {
+    padding: 0.35rem;
 }

@@ -22,8 +22,11 @@
     <!-- Side Navigation panel -->
     <aside class="desktop-nav">
       <div class="account-action">
-        <img src="image/3c36493bb532231feea8f35fd29cca05.jpg" alt="user-Picture">
-        <span id="name">Mpilo</span>
+        <div class="user-display">
+          <img src="image/3c36493bb532231feea8f35fd29cca05.jpg" alt="user-Picture">
+          <span id="name">Mpilo</span>
+        </div>
+        <button><i class="fa-solid fa-angle-down" id="dropdown"></i></button>
       </div>
 
       <nav>
@@ -36,7 +39,6 @@
                 <i class="fa-solid fa-calendar-days"></i>
                 Calendar
               </div>
-              <i class="fa-solid fa-angle-down" id="dropDown"></i>
             </span>
             <span id="month">March</span>
             <table class="calendar-table">
@@ -108,7 +110,7 @@
                 <span class="material-symbols-outlined">label</span>
                 Tags
               </div>
-              <i class="fa-solid fa-angle-down" id="dropDown"></i>
+              <button><i class="fa-solid fa-plus" id="addBtn"></i></button>
             </span>
             <ul class="tags" id="tag-carousel">
               <li id="tag">Project</li>
@@ -116,9 +118,6 @@
               <li id="tag">Job</li>
             </ul>
           </div>
-        </li>
-        <li>
-          <div class="setting-div"><i class="fa-solid fa-gear"></i>Settings</div>
         </li>
       </nav>
 
@@ -246,31 +245,163 @@
               </li>
             </ul>
           </nav>
+
+          <div class="carousel-subheader">
+            <p id="greeting"> Good Morning</p>
+
+            <button id="listFilter">
+              <div class="list-filter">
+                <span class="span-1"></span>
+                <span class="span-2"></span>
+                <span class="span-3"></span>
+              </div>
+            </button>
+          </div>
         </div>
 
         <div class="carousel-group">
 
           <!-- Make card with JavaScript -->
-          <div class="note-card"> <!--Placeholder-->
+          <ul class="carousel-list">
+            <li id="list-item">
+              <div class="note-card"> <!--Placeholder-->
 
-            <h4 id="dateCreated">Today</h4>
+                <h4 id="dateCreated">13 Mar</h4>
 
-            <h2 class="note-title" id="card-title">
-              Finish What-To-Do
-            </h2>
+                <h2 class="note-title" id="card-title">
+                  Finish What-To-Do
+                </h2>
 
-            <p id="card-description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-              ut aliquip ex ea commodo consequat.
-            </p>
+                <div id="card-description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
 
-            <div class="note-tags">
-              <p class="note-tag" id="tag">Project</p>
-              <p class="note-tag" id="tag">Job</p>
-            </div>
-          </div>
+                <div class="note-tags">
+                  <p class="note-tag" id="tag">Project</p>
+                  <p class="note-tag" id="tag">Job</p>
+                </div>
+              </div>
+            </li>
+            <li id="list-item">
+              <div class="note-card"> <!--Placeholder-->
+
+                <h4 id="dateCreated">13 Mar</h4>
+
+                <h2 class="note-title" id="card-title">
+                  Finish What-To-Do
+                </h2>
+
+                <div id="card-description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+
+                <div class="note-tags">
+                  <p class="note-tag" id="tag">Project</p>
+                  <p class="note-tag" id="tag">Job</p>
+                </div>
+              </div>
+            </li>
+            <li id="list-item">
+              <div class="note-card"> <!--Placeholder-->
+
+                <h4 id="dateCreated">13 Mar</h4>
+
+                <h2 class="note-title" id="card-title">
+                  Finish What-To-Do
+                </h2>
+
+                <div id="card-description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+
+                <div class="note-tags">
+                  <p class="note-tag" id="tag">Project</p>
+                  <p class="note-tag" id="tag">Job</p>
+                </div>
+              </div>
+            </li>
+            <li id="list-item">
+              <div class="note-card"> <!--Placeholder-->
+
+                <h4 id="dateCreated">13 Mar</h4>
+
+                <h2 class="note-title" id="card-title">
+                  Finish What-To-Do
+                </h2>
+
+                <div id="card-description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+
+                <div class="note-tags">
+                  <p class="note-tag" id="tag">Project</p>
+                  <p class="note-tag" id="tag">Job</p>
+                </div>
+              </div>
+            </li>
+            <li id="list-item">
+              <div class="note-card"> <!--Placeholder-->
+
+                <h4 id="dateCreated">13 Mar</h4>
+
+                <h2 class="note-title" id="card-title">
+                  Finish What-To-Do
+                </h2>
+
+                <div id="card-description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+
+                <div class="note-tags">
+                  <p class="note-tag" id="tag">Project</p>
+                  <p class="note-tag" id="tag">Job</p>
+                </div>
+              </div>
+            </li>
+            <li id="list-item">
+              <div class="note-card"> <!--Placeholder-->
+
+                <h4 id="dateCreated">13 Mar</h4>
+
+                <h2 class="note-title" id="card-title">
+                  Finish What-To-Do
+                </h2>
+
+                <div id="card-description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+
+                <div class="note-tags">
+                  <p class="note-tag" id="tag">Project</p>
+                  <p class="note-tag" id="tag">Job</p>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
 
