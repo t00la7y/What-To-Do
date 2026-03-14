@@ -75,7 +75,7 @@ main {
     min-height: 99vh;
     border-radius: 1rem;
     grid-template-rows: 1fr auto;
-    grid-template-columns: 4fr; /* Removed aside from grid since it's fixed */
+    grid-template-columns: 4fr;
     background-color: var(--bg-light);
     overflow-y: hidden;
 }

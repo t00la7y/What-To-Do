@@ -1,0 +1,69 @@
+@import url(modal.css);
+
+/* Create */
+.create-to-do {
+    display: none;
+}
+
+
+/* View */
+.to-do-Note {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.to-do-Note .view-note-header {
+    width: 100%;
+    display: flex;
+    padding: 0 1rem;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1.5rem;
+}
+
+.to-do-Note .view-note-header .note-options {
+    align-self: end;
+}
+
+.to-do-Note .view-note-header #card-title {
+    font-weight: 900;
+    align-self: start;
+    font-family: var(--font-heading);
+    font-size: calc(var(--font-xl*2));
+}
+
+.to-do-Note .view-note-body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.to-do-Note .view-note-body .view-note-about {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    gap: 0.25rem;
+    list-style: none;
+    padding: 0.5rem 3rem;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.to-do-Note .view-note-body .view-note-about span {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.to-do-Note .view-note-body .view-note-detail {
+    height: 80%;
+    width: 100%;
+    padding: 1rem 1rem;
+}

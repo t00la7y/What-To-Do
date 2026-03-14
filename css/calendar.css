@@ -15,7 +15,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 0.25rem;
 }
 
 .calendar-label {
@@ -23,7 +22,7 @@
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.175rem;
 }
 
 /* Table styling */

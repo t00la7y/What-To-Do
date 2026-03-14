@@ -132,7 +132,7 @@
     </aside>
 
     <!-- Home page content -->
-    <section class="page-home">
+    <section class="page">
 
       <!-- Notes Carousel [Up to Down]-->
       <section class="card-carousel">
@@ -407,6 +407,10 @@
 
       <!-- Note/To-Do display -->
       <section class="display">
+        <!-- App Home -->
+        <div class="home">
+
+        </div>
         <!-- New note -->
         <div class="create-to-do">
           <form></form>
@@ -414,7 +418,33 @@
 
         <!-- View Note -->
         <div class="to-do-Note">
-          <h2 .class="title" id="card-title">Finish What-To-Do</h2>
+          <div class="view-note-header">
+            <i class="fa-solid fa-ellipsis note-options"></i>
+            <h2 .class="title" id="card-title">Finish What-To-Do</h2>
+          </div>
+          <div class="view-note-body">
+            <ul class="view-note-about">
+              <li><span><p>Date Due :</p> <p id="dateDue"> 01 May</p></span></li>
+              <li><span><p>Progress :</p> <p id="cardStatus"> Not Done</p></span></li>
+              <li><span><p>Date Modified :</p> <p id="dateModified">14 Mar</p></span></li>
+              <li><span><p>Tags :</p>
+                  <div class="note-tags">
+                    <p class="note-tag" id="tag">Project</p>
+                    <p class="note-tag" id="tag">Job</p>
+                    <p class="note-tag" id="tag">Job</p>
+                    <p class="note-tag" id="tag">Job</p>
+                  </div>
+                </span></li>
+            </ul>
+
+            <div class="view-note-detail">
+              <ul class="note-check-list">
+                <li>Finish the layout</li>
+
+              </ul>
+            </div>
+
+          </div>
         </div>
       </section>
     </section>

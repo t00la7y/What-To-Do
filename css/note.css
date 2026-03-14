@@ -36,9 +36,9 @@
 
 .note-tag {
     width: fit-content;
-    font-size: var(--font-m);
     color: var(--text);
     border-radius: 0.25rem;
     padding: 0.05rem 0.45rem;
+    font-size: var(--font-m);
     background-color: var(--bg-dark);
 }
