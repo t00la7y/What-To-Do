@@ -15,7 +15,7 @@
   <title>What-To-Do</title>
 </head>
 
-<body>
+<body class="dark-mode">
 
   <main>
 
@@ -37,7 +37,7 @@
           <i class="fa-solid fa-house"></i>
           <span class="nav-label">Home</span>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="new-note-btn">
           <i class="fa-solid fa-circle-plus"></i>
           <span class="nav-label">New Note</span>
         </li>
@@ -343,41 +343,7 @@
         <!-- App Home -->
         <div class="home">
 
-          <!-- Create form (top 40%) -->
-          <div class="create-to-do">
-            <div class="create-header">
-              <h2>Create Note</h2>
-            </div>
-            <div class="create-body">
-              <input type="text" class="create-title-input" placeholder="Title" maxlength="60" />
-              <div class="create-type-selector">
-                <button class="type-btn active" data-type="ul">
-                  <i class="fa-solid fa-list-ul"></i> List
-                </button>
-                <button class="type-btn" data-type="ol">
-                  <i class="fa-solid fa-list-ol"></i> Ordered
-                </button>
-                <button class="type-btn" data-type="textarea">
-                  <i class="fa-solid fa-align-left"></i> Note
-                </button>
-              </div>
-              <textarea class="create-body-input" placeholder="Short description..."></textarea>
-              <div class="create-meta">
-                <input type="text" class="create-tag-input" placeholder="Add tag, press Enter" />
-                <div class="create-tags-preview"></div>
-                <select class="create-priority-select">
-                  <option value="normal">Normal</option>
-                  <option value="urgent">Urgent</option>
-                </select>
-                <input type="date" class="create-due-input" />
-              </div>
-            </div>
-            <div class="create-footer">
-              <button class="create-save-btn">
-                <i class="fa-solid fa-floppy-disk"></i> Save Note
-              </button>
-            </div>
-          </div>
+          <!-- Create Note is now handled via the popup component (triggered by "New Note" nav item) -->
 
           <!-- Home content (bottom 60%) -->
           <div class="home-content">
@@ -484,12 +450,13 @@
       </section>
     </section>
 
-    <div class="create-backdrop" id="create-backdrop"></div>
+    <div class="popup-backdrop create-backdrop" id="create-backdrop"></div>
 
-    <div class="create-popup" id="create-popup">
+    <div class="popup create-popup" id="create-popup">
 
       <div class="create-header">
         <h2>Create Note</h2>
+        <button class="create-close" aria-label="Close">×</button>
       </div>
 
       <div class="create-body">
@@ -531,8 +498,8 @@
     </div>
 
     <!-- Tag popup — outside sidebar so it's never clipped -->
-    <div class="tag-popup-backdrop" id="tag-backdrop"></div>
-    <div class="tag-popup" id="tag-popup">
+    <div class="popup-backdrop tag-popup-backdrop" id="tag-backdrop"></div>
+    <div class="popup tag-popup" id="tag-popup">
       <div class="tag-popup-header">
         <span>Manage Tags</span>
       </div>
@@ -548,74 +515,7 @@
 
   </main>
 
-  <script>
-    /* Mobile nav toggle */
-    const hamburger = document.querySelector('.hamburger-menu');
-    const mobileNav = document.querySelector('.mobile-nav');
-
-    hamburger?.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileNav.classList.toggle('open');
-    });
-
-    /* Set home active on load */
-    document.querySelector('.home')?.classList.add('active');
-
-    /* Checklist toggle */
-    document.querySelectorAll('.check-item').forEach(item => {
-      item.addEventListener('click', () => {
-        item.classList.toggle('done');
-        item.querySelector('.check-box').classList.toggle('done');
-      });
-    });
-
-    /* Hide carousel header on scroll down, show on scroll up */
-    const carouselGroup = document.querySelector('.carousel-group');
-    const carouselHeader = document.querySelector('.carousel-header');
-    let lastScrollY = 0;
-
-    carouselGroup?.addEventListener('scroll', () => {
-      const currentScrollY = carouselGroup.scrollTop;
-      if (currentScrollY > lastScrollY && currentScrollY > 60) {
-        carouselHeader.classList.add('hidden');
-      } else {
-        carouselHeader.classList.remove('hidden');
-      }
-      lastScrollY = currentScrollY;
-    });
-
-    /* Tag popup */
-    const tagFilterBtn = document.getElementById('listFilter');
-    const tagFilterBtnCarousel = document.getElementById('listFilterCarousel');
-    const tagPopup = document.getElementById('tag-popup');
-    const tagBackdrop = document.getElementById('tag-backdrop');
-
-    const openTagPopup = () => {
-      tagPopup.classList.add('open');
-      tagBackdrop.classList.add('open');
-    };
-
-    const closeTagPopup = () => {
-      tagPopup.classList.remove('open');
-      tagBackdrop.classList.remove('open');
-    };
-
-    tagFilterBtn?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      tagPopup.classList.contains('open') ? closeTagPopup() : openTagPopup();
-    });
-
-    tagFilterBtnCarousel?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      tagPopup.classList.contains('open') ? closeTagPopup() : openTagPopup();
-    });
-
-    tagBackdrop?.addEventListener('click', closeTagPopup);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeTagPopup();
-    });
-  </script>
+  <script type="module" src="js/app.js"></script>
 
 </body>
 

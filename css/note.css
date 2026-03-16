@@ -13,7 +13,7 @@
     font-weight: bolder;
 }
 
-#card-description {
+.card-description {
     width: fit-content;
     color: var(--text-muted);
     font-size: var(--font-s);
@@ -30,7 +30,7 @@
 }
 
 
-#dateCreated {
+.dateCreated {
     color: var(--text-muted);
 }
 

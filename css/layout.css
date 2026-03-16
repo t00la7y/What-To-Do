@@ -1,0 +1,39 @@
+/* ─── Overall layout ─────────────────────────── */
+
+.page {
+  display: flex;
+  flex-direction: row;
+  margin-left: clamp(16rem, 20rem, 30rem);
+  height: 100vh;
+  width: calc(100% - clamp(16rem, 20rem, 30rem));
+  overflow: hidden;
+  transition: margin-left 0.25s ease, width 0.25s ease;
+}
+
+.display {
+  flex: 1;
+  min-width: 0;
+  background-color: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── SPA page transitions ───────────────────── */
+.home,
+.to-do-Note {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.home.active,
+.to-do-Note.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+  position: relative;
+}
