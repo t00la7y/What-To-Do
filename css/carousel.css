@@ -8,6 +8,16 @@
     height: 100%;
     flex: 0 0 40%;
     min-width: 0;
+    overflow: hidden; /* add this */
+}
+
+.carousel-group {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
 }
 
 .carousel-list {
@@ -26,15 +36,6 @@
     padding-bottom: 0.25rem;
 }
 
-.carousel-group {
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-    overscroll-behavior: contain;
-}
-
 .carousel-group::-webkit-scrollbar {
     display: none;
 }
@@ -43,7 +44,9 @@
     font-weight: 700;
     width: 100%;
     position: sticky;
+    top: 0;
     z-index: 10;
+    overflow: hidden;
     padding: 0.75rem 0 1rem 0;
     font-size: var(--font-xl);
     background-color: var(--bg-dark);

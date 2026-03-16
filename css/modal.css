@@ -126,3 +126,43 @@ button:hover {
 button .fa-plus {
   padding: 0.35rem;
 }
+
+.create-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+  z-index: 500;
+}
+
+.create-popup{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  width: clamp(320px, 50vw, 620px);
+  max-height: 80vh;
+  background: var(--bg-light);
+  border-radius: var(--font-s);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .25s ease;
+  z-index: 600;
+}
+
+.create-popup.open{
+  opacity:1;
+  pointer-events:all;
+  transform:translate(-50%,-50%);
+}
+
+.create-backdrop.open{
+  opacity:1;
+  pointer-events:all;
+}

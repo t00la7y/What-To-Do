@@ -21,110 +21,120 @@
 
     <!-- Side Navigation panel -->
     <aside class="desktop-nav">
+
+      <!-- Account block -->
       <div class="account-action">
         <div class="user-display">
           <img src="image/3c36493bb532231feea8f35fd29cca05.jpg" alt="user-Picture">
-          <span id="name">Mpilo</span>
+          <span class="nav-label nav-name" id="name">Mpilo</span>
         </div>
-        <button><i class="fa-solid fa-angle-down" id="dropdown"></i></button>
+        <button class="nav-label-show"><i class="fa-solid fa-angle-down" id="dropdown"></i></button>
       </div>
 
+      <!-- Nav links -->
       <nav>
-        <li><i class="fa-solid fa-house"></i>Home</li>
-        <li><i class="fa-solid fa-circle-plus"></i>New Note</li>
-        <li>
-          <div class="calendar-container">
-            <span>
-              <div class="calendar-label">
-                <i class="fa-solid fa-calendar-days"></i>
-                Calendar
-              </div>
-            </span>
-            <span id="month">March</span>
-            <table class="calendar-table">
-              <thead>
-                <tr>
-                  <th>Sun</th>
-                  <th>Mon</th>
-                  <th>Tue</th>
-                  <th>Wed</th>
-                  <th>Thu</th>
-                  <th>Fri</th>
-                  <th>Sat</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>8</td>
-                  <td>9</td>
-                  <td>10</td>
-                  <td>11</td>
-                  <td>12</td>
-                  <td>13</td>
-                </tr>
-                <tr>
-                  <td>14</td>
-                  <td>15</td>
-                  <td>16</td>
-                  <td>17</td>
-                  <td>18</td>
-                  <td>19</td>
-                  <td>20</td>
-                </tr>
-                <tr>
-                  <td>21</td>
-                  <td>22</td>
-                  <td>23</td>
-                  <td>24</td>
-                  <td>25</td>
-                  <td>26</td>
-                  <td>27</td>
-                </tr>
-                <tr>
-                  <td>28</td>
-                  <td>29</td>
-                  <td>30</td>
-                  <td>31</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <li class="nav-item active-nav">
+          <i class="fa-solid fa-house"></i>
+          <span class="nav-label">Home</span>
         </li>
-        <li>
-          <div class="tag-container">
-            <span>
-              <div class="tag-label">
-                <span class="material-symbols-outlined">label</span>
-                Tags
-              </div>
-              <button><i class="fa-solid fa-plus" id="addBtn"></i></button>
-            </span>
-            <ul class="tags" id="tag-carousel">
-              <li class="tag">Project</li>
-              <li class="tag">Toiletries</li>
-              <li class="tag">Job</li>
-            </ul>
-          </div>
+        <li class="nav-item">
+          <i class="fa-solid fa-circle-plus"></i>
+          <span class="nav-label">New Note</span>
+        </li>
+        <li class="nav-item nav-tags">
+          <i class="fa-solid fa-tag"></i>
+          <span class="nav-label">Tags</span>
+          <button id="listFilter" class="tag-filter-btn nav-label-show">
+            <div class="list-filter">
+              <span class="span-1"></span>
+              <span class="span-2"></span>
+              <span class="span-3"></span>
+            </div>
+          </button>
+        </li>
+        <li class="nav-item">
+          <i class="fa-solid fa-gear"></i>
+          <span class="nav-label">Settings</span>
         </li>
       </nav>
 
-      <!-- web app footer -->
+      <!-- Calendar block — separate from nav -->
+      <div class="nav-calendar-block">
+        <div class="calendar-container">
+          <!-- <span>
+            <div class="calendar-label">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span class="nav-label">Calendar</span>
+            </div>
+          </span> -->
+          <span class="nav-label" id="month">March</span>
+          <table class="calendar-table nav-label">
+            <thead>
+              <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+              </tr>
+              <tr>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Footer -->
       <footer>
-        <span class="author">Mpilo Shezi</span>
-        <span>&copy; 2026 What-To-Do</span>
+        <span class="nav-label author">Mpilo Shezi</span>
+        <span class="nav-label">&copy; 2026 What-To-Do</span>
       </footer>
 
     </aside>
@@ -135,128 +145,111 @@
       <!-- Notes Carousel [Up to Down] -->
       <section class="card-carousel">
 
-        <div class="carousel-header">
-          <h3>What-To-Do</h3>
-
-          <!-- Hamburger menu -->
-          <div class="hamburger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <!-- Mobile Navigation -->
-          <nav class="mobile-nav">
-            <ul class="mobile-nav-list">
-              <li><i class="fa-solid fa-house"></i>Home</li>
-              <li><i class="fa-solid fa-circle-plus"></i>New Note</li>
-              <li>
-                <div class="calendar-container">
-                  <span>
-                    <div class="calendar-label">
-                      <i class="fa-solid fa-calendar-days"></i>
-                      Calendar
-                    </div>
-                    <i class="fa-solid fa-angle-down" id="dropDown"></i>
-                  </span>
-                  <span id="month">March</span>
-                  <table class="calendar-table">
-                    <thead>
-                      <tr>
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td></td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                      </tr>
-                      <tr>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                      </tr>
-                      <tr>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                        <td>25</td>
-                        <td>26</td>
-                        <td>27</td>
-                      </tr>
-                      <tr>
-                        <td>28</td>
-                        <td>29</td>
-                        <td>30</td>
-                        <td>31</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </li>
-              <li>
-                <div class="tag-container">
-                  <span>
-                    <div class="tag-label">
-                      <span class="material-symbols-outlined">label</span>
-                      Tags
-                    </div>
-                    <i class="fa-solid fa-angle-down" id="dropDown"></i>
-                  </span>
-                  <ul class="tags" id="tag-carousel">
-                    <li class="tag">Project</li>
-                    <li class="tag">Toiletries</li>
-                    <li class="tag">Job</li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <div class="setting-div"><i class="fa-solid fa-gear"></i>Settings</div>
-              </li>
-            </ul>
-          </nav>
-
-          <div class="carousel-subheader">
-            <p id="greeting">Good Morning</p>
-            <button id="listFilter">
-              <div class="list-filter">
-                <span class="span-1"></span>
-                <span class="span-2"></span>
-                <span class="span-3"></span>
-              </div>
-            </button>
-          </div>
-        </div>
-
         <div class="carousel-group">
+
+          <div class="carousel-header">
+            <h3>What-To-Do</h3>
+
+            <!-- Hamburger menu -->
+            <div class="hamburger-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav">
+              <ul class="mobile-nav-list">
+                <li><i class="fa-solid fa-house"></i>Home</li>
+                <li><i class="fa-solid fa-circle-plus"></i>New Note</li>
+                <li>
+                  <div class="calendar-container">
+                    <span>
+                      <div class="calendar-label">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        Calendar
+                      </div>
+                    </span>
+                    <span id="month-mobile">March</span>
+                    <table class="calendar-table">
+                      <thead>
+                        <tr>
+                          <th>Sun</th>
+                          <th>Mon</th>
+                          <th>Tue</th>
+                          <th>Wed</th>
+                          <th>Thu</th>
+                          <th>Fri</th>
+                          <th>Sat</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td></td>
+                          <td>1</td>
+                          <td>2</td>
+                          <td>3</td>
+                          <td>4</td>
+                          <td>5</td>
+                          <td>6</td>
+                        </tr>
+                        <tr>
+                          <td>7</td>
+                          <td>8</td>
+                          <td>9</td>
+                          <td>10</td>
+                          <td>11</td>
+                          <td>12</td>
+                          <td>13</td>
+                        </tr>
+                        <tr>
+                          <td>14</td>
+                          <td>15</td>
+                          <td>16</td>
+                          <td>17</td>
+                          <td>18</td>
+                          <td>19</td>
+                          <td>20</td>
+                        </tr>
+                        <tr>
+                          <td>21</td>
+                          <td>22</td>
+                          <td>23</td>
+                          <td>24</td>
+                          <td>25</td>
+                          <td>26</td>
+                          <td>27</td>
+                        </tr>
+                        <tr>
+                          <td>28</td>
+                          <td>29</td>
+                          <td>30</td>
+                          <td>31</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </li>
+                <li><i class="fa-solid fa-gear"></i>Settings</li>
+              </ul>
+            </nav>
+
+            <div class="carousel-subheader">
+              <p id="greeting">Good Morning</p>
+              <button id="listFilterCarousel" class="tag-filter-btn">
+                <div class="list-filter">
+                  <span class="span-1"></span>
+                  <span class="span-2"></span>
+                  <span class="span-3"></span>
+                </div>
+              </button>
+            </div>
+
+          </div>
+
           <!-- Cards rendered by JavaScript -->
           <ul class="carousel-list">
             <li class="list-item">
@@ -339,6 +332,7 @@
               </div>
             </li>
           </ul>
+
         </div>
 
       </section>
@@ -469,8 +463,6 @@
                 </span></li>
             </ul>
             <div class="view-note-detail">
-              <!-- Rendered by JS based on note type -->
-              <!-- Scenario 1: ul checklist -->
               <ul class="note-check-list">
                 <li class="check-item">
                   <div class="check-box done"></div>
@@ -491,6 +483,68 @@
 
       </section>
     </section>
+
+    <div class="create-backdrop" id="create-backdrop"></div>
+
+    <div class="create-popup" id="create-popup">
+
+      <div class="create-header">
+        <h2>Create Note</h2>
+      </div>
+
+      <div class="create-body">
+        <input type="text" class="create-title-input" placeholder="Title" maxlength="60" />
+
+        <div class="create-type-selector">
+          <button class="type-btn active" data-type="ul">
+            <i class="fa-solid fa-list-ul"></i> List
+          </button>
+          <button class="type-btn" data-type="ol">
+            <i class="fa-solid fa-list-ol"></i> Ordered
+          </button>
+          <button class="type-btn" data-type="textarea">
+            <i class="fa-solid fa-align-left"></i> Note
+          </button>
+        </div>
+
+        <textarea class="create-body-input" placeholder="Short description..."></textarea>
+
+        <div class="create-meta">
+          <input type="text" class="create-tag-input" placeholder="Add tag, press Enter" />
+          <div class="create-tags-preview"></div>
+
+          <select class="create-priority-select">
+            <option value="normal">Normal</option>
+            <option value="urgent">Urgent</option>
+          </select>
+
+          <input type="date" class="create-due-input" />
+        </div>
+      </div>
+
+      <div class="create-footer">
+        <button class="create-save-btn">
+          <i class="fa-solid fa-floppy-disk"></i> Save Note
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Tag popup — outside sidebar so it's never clipped -->
+    <div class="tag-popup-backdrop" id="tag-backdrop"></div>
+    <div class="tag-popup" id="tag-popup">
+      <div class="tag-popup-header">
+        <span>Manage Tags</span>
+      </div>
+      <ul class="tags" id="tag-list">
+        <li class="tag">Project <i class="fa-solid fa-xmark tag-delete"></i></li>
+        <li class="tag">Toiletries <i class="fa-solid fa-xmark tag-delete"></i></li>
+        <li class="tag">Job <i class="fa-solid fa-xmark tag-delete"></i></li>
+      </ul>
+      <div class="tag-popup-footer">
+        <input type="text" class="tag-add-input" placeholder="New tag, press Enter" />
+      </div>
+    </div>
 
   </main>
 
@@ -515,7 +569,6 @@
       });
     });
 
-
     /* Hide carousel header on scroll down, show on scroll up */
     const carouselGroup = document.querySelector('.carousel-group');
     const carouselHeader = document.querySelector('.carousel-header');
@@ -523,16 +576,44 @@
 
     carouselGroup?.addEventListener('scroll', () => {
       const currentScrollY = carouselGroup.scrollTop;
-
       if (currentScrollY > lastScrollY && currentScrollY > 60) {
-        // Scrolling down and past 60px — hide header
         carouselHeader.classList.add('hidden');
       } else {
-        // Scrolling up — show header
         carouselHeader.classList.remove('hidden');
       }
-
       lastScrollY = currentScrollY;
+    });
+
+    /* Tag popup */
+    const tagFilterBtn = document.getElementById('listFilter');
+    const tagFilterBtnCarousel = document.getElementById('listFilterCarousel');
+    const tagPopup = document.getElementById('tag-popup');
+    const tagBackdrop = document.getElementById('tag-backdrop');
+
+    const openTagPopup = () => {
+      tagPopup.classList.add('open');
+      tagBackdrop.classList.add('open');
+    };
+
+    const closeTagPopup = () => {
+      tagPopup.classList.remove('open');
+      tagBackdrop.classList.remove('open');
+    };
+
+    tagFilterBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      tagPopup.classList.contains('open') ? closeTagPopup() : openTagPopup();
+    });
+
+    tagFilterBtnCarousel?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      tagPopup.classList.contains('open') ? closeTagPopup() : openTagPopup();
+    });
+
+    tagBackdrop?.addEventListener('click', closeTagPopup);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeTagPopup();
     });
   </script>
 

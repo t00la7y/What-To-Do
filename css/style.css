@@ -12,96 +12,175 @@
 }
 
 /* ─── Desktop nav ────────────────────────────── */
+/*
+  Three states:
+  Full  (>= 900px)  : 16rem wide, labels visible
+  Mini  (600-899px) : 4rem wide, icons only
+  Gone  (< 600px)   : hidden, mobile nav takes over
+*/
+
 .desktop-nav {
   display: flex;
-  padding: 1rem;
-  color: var(--text);
   flex-direction: column;
-  font-size: var(--font-m);
+  justify-content: space-between;
   background-color: var(--bg);
   font-family: var(--font-body);
-  justify-content: space-between;
-  flex: 1 1 auto;
+  color: var(--text);
   position: fixed;
   height: 100vh;
-  width: 20rem;
+  width: clamp(16rem, 20rem, 30rem);
+  padding: 1rem 0.75rem;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
+  transition: width 0.25s ease;
+  z-index: 100;
 }
 
 .desktop-nav::-webkit-scrollbar {
   display: none;
 }
 
+/* ─── Account block ──────────────────────────── */
 .desktop-nav .account-action {
-  gap: 0.5rem;
-  width: 18rem;
   display: flex;
-  height: 3.7rem;
-  padding-left: 1rem;
-  align-self: center;
   align-items: center;
-  flex-direction: row;
-  border-radius: var(--font-s);
   justify-content: space-between;
+  gap: 0.5rem;
+  height: 3rem;
+  padding: 0 0.5rem;
+  border-radius: var(--font-s);
   background-color: var(--bg-dark);
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .desktop-nav .account-action .user-display {
   display: flex;
-  flex-direction: row;
-  justify-content: start;
   align-items: center;
   gap: 0.5rem;
+  min-width: 0;
 }
 
 .desktop-nav .account-action img {
-  width: 3rem;
-  height: 3rem;
+  width: 2.25rem;
+  height: 2.25rem;
   object-fit: cover;
   border-radius: 50%;
-  justify-self: flex-start;
+  flex-shrink: 0;
   border: 2px solid var(--bg-dark);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.desktop-nav .account-action #name {
-  justify-self: center;
-  font-size: var(--font-l);
+.desktop-nav .account-action .nav-name {
+  font-size: var(--font-m);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .desktop-nav .account-action button {
-  margin-right: 1rem;
-  justify-self: flex-end;
+  flex-shrink: 0;
   background-color: var(--bg-dark);
+  padding: 0.25rem 0.4rem;
 }
 
 .desktop-nav .account-action button:hover {
   background-color: var(--bg);
 }
 
-.desktop-nav .account-action button #dropdown {
-  padding: 0.4rem;
-}
-
+/* ─── Nav links ──────────────────────────────── */
 .desktop-nav nav {
-  padding: 1rem 0 0 1rem;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.5rem 0;
+  flex-shrink: 0;
 }
 
-.desktop-nav nav li {
-  margin-bottom: 0.35rem;
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--font-s);
+  font-size: var(--font-m);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.desktop-nav nav li i {
-  padding-right: 0.55rem;
+.nav-item:hover {
+  background-color: var(--bg-dark);
 }
 
-.setting-div {
-  align-self: center;
+.nav-item.active-nav {
+  background-color: var(--bg-dark);
+  font-weight: 700;
 }
 
+.nav-item i {
+  font-size: var(--font-m);
+  color: var(--text-muted);
+  flex-shrink: 0;
+  width: 1.1rem;
+  text-align: center;
+}
+
+.nav-item.active-nav i {
+  color: var(--text);
+}
+
+/* .nav-tags {
+  justify-content: space-between;
+} */
+
+.nav-tags .tag-filter-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem 0.35rem;
+  border-radius: var(--font-xs);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-tags .tag-filter-btn:hover {
+  background-color: var(--bg);
+}
+
+/* ─── Calendar block ─────────────────────────── */
+.nav-calendar-block {
+  flex: 1;
+  /* width: clamp(12rem, 14rem, 18rem); */
+  overflow: hidden;
+  padding: 0.5rem 0;
+  min-height: 0;
+}
+
+/* ─── Footer ─────────────────────────────────── */
+.desktop-nav footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+  color: var(--text-muted);
+  font-size: var(--font-xs);
+  flex-shrink: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* ─── Labels — hidden in mini mode ──────────── */
+.nav-label {
+  transition: opacity 0.2s ease;
+}
+
+/* ─── Note card ──────────────────────────────── */
 .note-card {
   background-color: var(--bg-light);
 }
@@ -110,10 +189,11 @@
 .page {
   display: flex;
   flex-direction: row;
-  margin-left: 20rem;
+  margin-left: clamp(16rem, 20rem, 30rem);
   height: 100vh;
-  width: calc(100% - 20rem);
+  width: calc(100% - clamp(16rem, 20rem, 30rem));
   overflow: hidden;
+  transition: margin-left 0.25s ease, width 0.25s ease;
 }
 
 .display {
@@ -317,7 +397,7 @@
   display: none;
 }
 
-/* ─── Section headers (Urgent / Due Soon) ───── */
+/* ─── Section headers ────────────────────────── */
 .home-section {
   display: flex;
   flex-direction: column;
@@ -398,29 +478,81 @@
   gap: 4px;
 }
 
-/* ─── Urgent card accent ─────────────────────── */
 .urgent-card {
   border-left: 3px solid var(--text);
   border-radius: 0 var(--font-s) var(--font-s) 0;
 }
 
-/* ─── Mobile nav (hidden by default) ────────── */
+/* ─── Hamburger — hidden on desktop ─────────── */
 .hamburger-menu {
-  visibility: hidden;
+  display: none;
 }
 
 .mobile-nav {
   display: none;
 }
 
-/* ─── Mobile breakpoint ──────────────────────── */
-@media (max-width: 500px) {
+/* ─── Mini nav (600px–899px) ─────────────────── */
+@media (max-width: 899px) {
+  .desktop-nav {
+    width: 4rem;
+    padding: 1rem 0.5rem;
+    align-items: center;
+  }
+
+  .desktop-nav .account-action {
+    width: 3rem;
+    padding: 0;
+    justify-content: center;
+  }
+
+  /* hide name and dropdown arrow in mini mode */
+  .desktop-nav .account-action .nav-label,
+  .desktop-nav .account-action .nav-label-show {
+    display: none;
+  }
+
+  .nav-item {
+    justify-content: center;
+    padding: 0.65rem;
+    gap: 0;
+  }
+
+  /* hide all text labels */
+  .nav-item .nav-label {
+    display: none;
+  }
+
+  /* hide tags filter btn in mini mode */
+  .nav-tags .nav-label-show {
+    display: none;
+  }
+
+  /* hide calendar block entirely in mini mode */
+  .nav-calendar-block {
+    display: none;
+  }
+
+  /* hide footer text */
+  .desktop-nav footer .nav-label {
+    display: none;
+  }
+
+  .page {
+    margin-left: 4rem;
+    width: calc(100% - 4rem);
+  }
+}
+
+/* ─── Mobile breakpoint (< 600px) ───────────── */
+@media (max-width: 599px) {
   .desktop-nav {
     display: none;
   }
 
   .page {
     margin-left: 0;
+    width: 100%;
     flex-direction: column;
   }
 
@@ -429,7 +561,6 @@
   }
 
   .hamburger-menu {
-    visibility: visible;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -449,7 +580,6 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
-  /* Hamburger → X animation */
   .hamburger-menu.open span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }

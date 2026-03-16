@@ -7,7 +7,7 @@
 .calendar-container #month {
     font-weight: 900;
     font-size: var(--font-m);
-    align-self: end;
+    align-self: start;
 }
 
 .calendar-container span {
