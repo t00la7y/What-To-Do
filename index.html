@@ -409,13 +409,11 @@
       <section class="display">
         <!-- App Home -->
         <div class="home">
-
+          <!-- New note -->
+          <div class="create-to-do">
+                  
+          </div>  
         </div>
-        <!-- New note -->
-        <div class="create-to-do">
-          <form></form>
-        </div>
-
         <!-- View Note -->
         <div class="to-do-Note">
           <div class="view-note-header">
@@ -436,12 +434,45 @@
                   </div>
                 </span></li>
             </ul>
-
+            <br>
             <div class="view-note-detail">
-              <ul class="note-check-list">
-                <li>Finish the layout</li>
 
+              <!-- Scenario 1: Unordered toggle list (ul) -->
+              <ul class="note-check-list">
+                <li class="check-item">
+                  <div class="check-box done"></div>
+                  <span>Research competitors</span>
+                </li>
+                <li class="check-item">
+                  <div class="check-box"></div>
+                  <span>Finish the layout</span>
+                </li>
+                <li class="check-item">
+                  <div class="check-box"></div>
+                  <span>Add interactions</span>
+                </li>
               </ul>
+            
+              <!-- Scenario 2: Ordered toggle list (ol) -->
+              <ol class="note-check-list ordered">
+                <li class="check-item">
+                  <div class="check-box done"></div>
+                  <span>Plan the project</span>
+                </li>
+                <li class="check-item">
+                  <div class="check-box"></div>
+                  <span>Set up the repo</span>
+                </li>
+                <li class="check-item">
+                  <div class="check-box"></div>
+                  <span>Build the API</span>
+                </li>
+              </ol>
+            
+              <!-- Scenario 3: Plain notes (textarea) -->
+              <textarea class="note-textarea" placeholder="Write your notes here..."></textarea>
+            
+            </div>
             </div>
 
           </div>
