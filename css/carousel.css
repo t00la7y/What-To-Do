@@ -1,5 +1,4 @@
 .card-carousel {
-    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -7,20 +6,22 @@
     padding-right: var(--font-l);
     background-color: var(--bg-dark);
     height: 100%;
+    flex: 0 0 40%;
+    min-width: 0;
 }
 
 .carousel-list {
     list-style: none;
     overflow-y: auto;
     overflow-x: hidden;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
 }
 
 .carousel-list::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge */
+    display: none;
 }
 
-.carousel-list #list-item {
+.carousel-list .list-item {
     margin-top: 1rem;
     padding-bottom: 0.25rem;
 }
@@ -29,21 +30,30 @@
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
 }
 
 .carousel-group::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge */
+    display: none;
 }
 
 .carousel-header {
     font-weight: 700;
-    top: 0;
     width: 100%;
-    position: relative;
+    position: sticky;
+    z-index: 10;
     padding: 0.75rem 0 1rem 0;
     font-size: var(--font-xl);
     background-color: var(--bg-dark);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.carousel-header.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .carousel-subheader {
@@ -76,17 +86,9 @@
     border-radius: 1px;
 }
 
-.span-1 {
-    width: 0.95rem;
-}
-
-.span-2 {
-    width: 0.75rem;
-}
-
-.span-3 {
-    width: 0.55rem;
-}
+.span-1 { width: 0.95rem; }
+.span-2 { width: 0.75rem; }
+.span-3 { width: 0.55rem; }
 
 .carousel-group .note-card {
     border-radius: var(--font-m);

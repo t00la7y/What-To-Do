@@ -1,23 +1,9 @@
 @import url(modal.css);
 
-/* ─── Home──────────────────────────────── */
-.home {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-}
-
-/* ─── Create ─────────────────────────────────── */
-.create-to-do {
-  display: none;
-}
-
 /* ─── View wrapper ───────────────────────────── */
 .to-do-Note {
   width: 100%;
   height: 100%;
-  display: none;
   flex-direction: column;
   justify-content: start;
   align-items: start;
@@ -37,7 +23,7 @@
   align-self: end;
 }
 
-.to-do-Note .view-note-header #card-title {
+.to-do-Note .view-note-header .card-title {
   font-weight: 900;
   align-self: start;
   font-family: var(--font-heading);
@@ -122,12 +108,10 @@
   gap: 8px;
 }
 
-/* ul: no numbers */
 ul.note-check-list {
   list-style: none;
 }
 
-/* ol: show step numbers to the left of the checkbox */
 ol.note-check-list {
   list-style: none;
   counter-reset: check-counter;
@@ -146,7 +130,6 @@ ol.note-check-list .check-item::before {
   flex-shrink: 0;
 }
 
-/* shared check-item row */
 .check-item {
   display: flex;
   align-items: center;
@@ -157,7 +140,6 @@ ol.note-check-list .check-item::before {
   font-family: var(--font-body);
 }
 
-/* checkbox box */
 .check-box {
   width: 16px;
   height: 16px;
@@ -167,15 +149,13 @@ ol.note-check-list .check-item::before {
   position: relative;
 }
 
-/* checked state */
 .check-box.done {
   background: var(--bg-dark);
   border-color: var(--shadows);
 }
 
-/* checkmark tick */
 .check-box.done::after {
-  content: '';
+  content: "";
   display: block;
   width: 9px;
   height: 5px;
@@ -187,7 +167,6 @@ ol.note-check-list .check-item::before {
   left: 2px;
 }
 
-/* strikethrough text when done */
 .check-item.done span {
   text-decoration: line-through;
   color: var(--text-muted);

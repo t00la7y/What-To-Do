@@ -113,15 +113,13 @@
               <button><i class="fa-solid fa-plus" id="addBtn"></i></button>
             </span>
             <ul class="tags" id="tag-carousel">
-              <li id="tag">Project</li>
-              <li id="tag">Toiletries</li>
-              <li id="tag">Job</li>
+              <li class="tag">Project</li>
+              <li class="tag">Toiletries</li>
+              <li class="tag">Job</li>
             </ul>
           </div>
         </li>
       </nav>
-
-
 
       <!-- web app footer -->
       <footer>
@@ -134,10 +132,10 @@
     <!-- Home page content -->
     <section class="page">
 
-      <!-- Notes Carousel [Up to Down]-->
+      <!-- Notes Carousel [Up to Down] -->
       <section class="card-carousel">
 
-        <div class="carousel-header"> <!--Staionary at the top-->
+        <div class="carousel-header">
           <h3>What-To-Do</h3>
 
           <!-- Hamburger menu -->
@@ -234,9 +232,9 @@
                     <i class="fa-solid fa-angle-down" id="dropDown"></i>
                   </span>
                   <ul class="tags" id="tag-carousel">
-                    <li>Project</li>
-                    <li>Toiletries</li>
-                    <li>Job</li>
+                    <li class="tag">Project</li>
+                    <li class="tag">Toiletries</li>
+                    <li class="tag">Job</li>
                   </ul>
                 </div>
               </li>
@@ -247,8 +245,7 @@
           </nav>
 
           <div class="carousel-subheader">
-            <p id="greeting"> Good Morning</p>
-
+            <p id="greeting">Good Morning</p>
             <button id="listFilter">
               <div class="list-filter">
                 <span class="span-1"></span>
@@ -260,184 +257,220 @@
         </div>
 
         <div class="carousel-group">
-
-          <!-- Make card with JavaScript -->
+          <!-- Cards rendered by JavaScript -->
           <ul class="carousel-list">
-            <li id="list-item">
-              <div class="note-card"> <!--Placeholder-->
-
-                <h4 id="dateCreated">13 Mar</h4>
-
-                <h2 class="note-title" id="card-title">
-                  Finish What-To-Do
-                </h2>
-
-                <div id="card-description">
+            <li class="list-item">
+              <div class="note-card" data-id="placeholder-1">
+                <h4 class="dateCreated">13 Mar</h4>
+                <h2 class="note-title">Finish What-To-Do</h2>
+                <div class="card-description">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat.
-                  </p>
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
-
                 <div class="note-tags">
-                  <p class="note-tag" id="tag">Project</p>
-                  <p class="note-tag" id="tag">Job</p>
+                  <p class="note-tag">Project</p>
+                  <p class="note-tag">Job</p>
                 </div>
               </div>
             </li>
-            <li id="list-item">
-              <div class="note-card"> <!--Placeholder-->
-
-                <h4 id="dateCreated">13 Mar</h4>
-
-                <h2 class="note-title" id="card-title">
-                  Finish What-To-Do
-                </h2>
-
-                <div id="card-description">
+            <li class="list-item">
+              <div class="note-card" data-id="placeholder-2">
+                <h4 class="dateCreated">13 Mar</h4>
+                <h2 class="note-title">Update Resume</h2>
+                <div class="card-description">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat.
-                  </p>
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
-
                 <div class="note-tags">
-                  <p class="note-tag" id="tag">Project</p>
-                  <p class="note-tag" id="tag">Job</p>
+                  <p class="note-tag">Job</p>
                 </div>
               </div>
             </li>
-            <li id="list-item">
-              <div class="note-card"> <!--Placeholder-->
-
-                <h4 id="dateCreated">13 Mar</h4>
-
-                <h2 class="note-title" id="card-title">
-                  Finish What-To-Do
-                </h2>
-
-                <div id="card-description">
+            <li class="list-item">
+              <div class="note-card" data-id="placeholder-3">
+                <h4 class="dateCreated">13 Mar</h4>
+                <h2 class="note-title">Buy Groceries</h2>
+                <div class="card-description">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat.
-                  </p>
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
-
                 <div class="note-tags">
-                  <p class="note-tag" id="tag">Project</p>
-                  <p class="note-tag" id="tag">Job</p>
+                  <p class="note-tag">Daily</p>
                 </div>
               </div>
             </li>
-            <li id="list-item">
-              <div class="note-card"> <!--Placeholder-->
-
-                <h4 id="dateCreated">13 Mar</h4>
-
-                <h2 class="note-title" id="card-title">
-                  Finish What-To-Do
-                </h2>
-
-                <div id="card-description">
+            <li class="list-item">
+              <div class="note-card" data-id="placeholder-4">
+                <h4 class="dateCreated">13 Mar</h4>
+                <h2 class="note-title">Read Clean Code</h2>
+                <div class="card-description">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat.
-                  </p>
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
-
                 <div class="note-tags">
-                  <p class="note-tag" id="tag">Project</p>
-                  <p class="note-tag" id="tag">Job</p>
+                  <p class="note-tag">Study</p>
                 </div>
               </div>
             </li>
-            <li id="list-item">
-              <div class="note-card"> <!--Placeholder-->
-
-                <h4 id="dateCreated">13 Mar</h4>
-
-                <h2 class="note-title" id="card-title">
-                  Finish What-To-Do
-                </h2>
-
-                <div id="card-description">
+            <li class="list-item">
+              <div class="note-card" data-id="placeholder-5">
+                <h4 class="dateCreated">13 Mar</h4>
+                <h2 class="note-title">Portfolio Update</h2>
+                <div class="card-description">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat.
-                  </p>
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
-
                 <div class="note-tags">
-                  <p class="note-tag" id="tag">Project</p>
-                  <p class="note-tag" id="tag">Job</p>
+                  <p class="note-tag">Project</p>
                 </div>
               </div>
             </li>
-            <li id="list-item">
-              <div class="note-card"> <!--Placeholder-->
-
-                <h4 id="dateCreated">13 Mar</h4>
-
-                <h2 class="note-title" id="card-title">
-                  Finish What-To-Do
-                </h2>
-
-                <div id="card-description">
+            <li class="list-item">
+              <div class="note-card" data-id="placeholder-6">
+                <h4 class="dateCreated">13 Mar</h4>
+                <h2 class="note-title">Call Dentist</h2>
+                <div class="card-description">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat.
-                  </p>
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
-
                 <div class="note-tags">
-                  <p class="note-tag" id="tag">Project</p>
-                  <p class="note-tag" id="tag">Job</p>
+                  <p class="note-tag">Daily</p>
                 </div>
               </div>
             </li>
           </ul>
         </div>
+
       </section>
 
-      <!-- Note/To-Do display -->
+      <!-- Display panel -->
       <section class="display">
+
         <!-- App Home -->
         <div class="home">
-          <!-- New note -->
+
+          <!-- Create form (top 40%) -->
           <div class="create-to-do">
-                  
-          </div>  
+            <div class="create-header">
+              <h2>Create Note</h2>
+            </div>
+            <div class="create-body">
+              <input type="text" class="create-title-input" placeholder="Title" maxlength="60" />
+              <div class="create-type-selector">
+                <button class="type-btn active" data-type="ul">
+                  <i class="fa-solid fa-list-ul"></i> List
+                </button>
+                <button class="type-btn" data-type="ol">
+                  <i class="fa-solid fa-list-ol"></i> Ordered
+                </button>
+                <button class="type-btn" data-type="textarea">
+                  <i class="fa-solid fa-align-left"></i> Note
+                </button>
+              </div>
+              <textarea class="create-body-input" placeholder="Short description..."></textarea>
+              <div class="create-meta">
+                <input type="text" class="create-tag-input" placeholder="Add tag, press Enter" />
+                <div class="create-tags-preview"></div>
+                <select class="create-priority-select">
+                  <option value="normal">Normal</option>
+                  <option value="urgent">Urgent</option>
+                </select>
+                <input type="date" class="create-due-input" />
+              </div>
+            </div>
+            <div class="create-footer">
+              <button class="create-save-btn">
+                <i class="fa-solid fa-floppy-disk"></i> Save Note
+              </button>
+            </div>
+          </div>
+
+          <!-- Home content (bottom 60%) -->
+          <div class="home-content">
+
+            <div class="home-section">
+              <div class="home-section-header">
+                <i class="fa-solid fa-fire"></i>
+                <h2>Urgent</h2>
+              </div>
+              <div class="home-cards-row" id="urgent-row">
+                <div class="home-card urgent-card" data-id="placeholder-1">
+                  <span class="home-card-date">01 May</span>
+                  <h3 class="home-card-title">Finish What-To-Do</h3>
+                  <div class="home-card-tags"><span class="note-tag">Project</span></div>
+                </div>
+                <div class="home-card urgent-card" data-id="placeholder-2">
+                  <span class="home-card-date">03 May</span>
+                  <h3 class="home-card-title">Update Resume</h3>
+                  <div class="home-card-tags"><span class="note-tag">Job</span></div>
+                </div>
+                <div class="home-card urgent-card" data-id="placeholder-3">
+                  <span class="home-card-date">05 May</span>
+                  <h3 class="home-card-title">Buy Groceries</h3>
+                  <div class="home-card-tags"><span class="note-tag">Daily</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="home-section">
+              <div class="home-section-header">
+                <i class="fa-solid fa-calendar-days"></i>
+                <h2>Due Soon</h2>
+              </div>
+              <div class="home-cards-row" id="due-soon-row">
+                <div class="home-card" data-id="placeholder-4">
+                  <span class="home-card-date">10 May</span>
+                  <h3 class="home-card-title">Read Clean Code</h3>
+                  <div class="home-card-tags"><span class="note-tag">Study</span></div>
+                </div>
+                <div class="home-card" data-id="placeholder-5">
+                  <span class="home-card-date">12 May</span>
+                  <h3 class="home-card-title">Portfolio Update</h3>
+                  <div class="home-card-tags"><span class="note-tag">Project</span></div>
+                </div>
+                <div class="home-card" data-id="placeholder-6">
+                  <span class="home-card-date">15 May</span>
+                  <h3 class="home-card-title">Call Dentist</h3>
+                  <div class="home-card-tags"><span class="note-tag">Daily</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
+
         <!-- View Note -->
         <div class="to-do-Note">
           <div class="view-note-header">
             <i class="fa-solid fa-ellipsis note-options"></i>
-            <h2 .class="title" id="card-title">Finish What-To-Do</h2>
+            <h2 class="title card-title">Finish What-To-Do</h2>
           </div>
           <div class="view-note-body">
             <ul class="view-note-about">
-              <li><span><p>Date Due :</p> <p id="dateDue"> 01 May</p></span></li>
-              <li><span><p>Progress :</p> <p id="cardStatus"> Not Done</p></span></li>
-              <li><span><p>Date Modified :</p> <p id="dateModified">14 Mar</p></span></li>
-              <li><span><p>Tags :</p>
+              <li><span>
+                  <p>Date Due :</p>
+                  <p class="dateDue">01 May</p>
+                </span></li>
+              <li><span>
+                  <p>Progress :</p>
+                  <p class="cardStatus">Not Done</p>
+                </span></li>
+              <li><span>
+                  <p>Date Modified :</p>
+                  <p class="dateModified">14 Mar</p>
+                </span></li>
+              <li><span>
+                  <p>Tags :</p>
                   <div class="note-tags">
-                    <p class="note-tag" id="tag">Project</p>
-                    <p class="note-tag" id="tag">Job</p>
-                    <p class="note-tag" id="tag">Job</p>
-                    <p class="note-tag" id="tag">Job</p>
+                    <p class="note-tag">Project</p>
+                    <p class="note-tag">Job</p>
                   </div>
                 </span></li>
             </ul>
-            <br>
             <div class="view-note-detail">
-
-              <!-- Scenario 1: Unordered toggle list (ul) -->
+              <!-- Rendered by JS based on note type -->
+              <!-- Scenario 1: ul checklist -->
               <ul class="note-check-list">
                 <li class="check-item">
                   <div class="check-box done"></div>
@@ -452,35 +485,56 @@
                   <span>Add interactions</span>
                 </li>
               </ul>
-            
-              <!-- Scenario 2: Ordered toggle list (ol) -->
-              <ol class="note-check-list ordered">
-                <li class="check-item">
-                  <div class="check-box done"></div>
-                  <span>Plan the project</span>
-                </li>
-                <li class="check-item">
-                  <div class="check-box"></div>
-                  <span>Set up the repo</span>
-                </li>
-                <li class="check-item">
-                  <div class="check-box"></div>
-                  <span>Build the API</span>
-                </li>
-              </ol>
-            
-              <!-- Scenario 3: Plain notes (textarea) -->
-              <textarea class="note-textarea" placeholder="Write your notes here..."></textarea>
-            
             </div>
-            </div>
-
           </div>
         </div>
+
       </section>
     </section>
 
   </main>
+
+  <script>
+    /* Mobile nav toggle */
+    const hamburger = document.querySelector('.hamburger-menu');
+    const mobileNav = document.querySelector('.mobile-nav');
+
+    hamburger?.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+
+    /* Set home active on load */
+    document.querySelector('.home')?.classList.add('active');
+
+    /* Checklist toggle */
+    document.querySelectorAll('.check-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('done');
+        item.querySelector('.check-box').classList.toggle('done');
+      });
+    });
+
+
+    /* Hide carousel header on scroll down, show on scroll up */
+    const carouselGroup = document.querySelector('.carousel-group');
+    const carouselHeader = document.querySelector('.carousel-header');
+    let lastScrollY = 0;
+
+    carouselGroup?.addEventListener('scroll', () => {
+      const currentScrollY = carouselGroup.scrollTop;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 60) {
+        // Scrolling down and past 60px — hide header
+        carouselHeader.classList.add('hidden');
+      } else {
+        // Scrolling up — show header
+        carouselHeader.classList.remove('hidden');
+      }
+
+      lastScrollY = currentScrollY;
+    });
+  </script>
 
 </body>
 
