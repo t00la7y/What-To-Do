@@ -121,3 +121,8 @@ export function initUI() {
 
   initGlobalShortcuts({ closeTagPopup, closeCreatePopup });
 }
+
+document.addEventListener("calendarDateSelected", (e) => {
+  const { date, tasks } = e.detail;
+  date ? renderHomePageForDate(date, tasks) : renderHomePage();
+});
