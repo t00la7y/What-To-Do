@@ -4,7 +4,7 @@ A clean, fast, single-page productivity app for managing notes and tasks.
 Built with vanilla HTML, CSS, and JavaScript — no frameworks, no dependencies.
 
 **Developer:** Mpilo Shezi  
-**Live Demo:** *(add link here)*  
+**Live Demo:** https://t00la7y.github.io/What-To-Do 
 **Repo:** https://github.com/t00la7y/What-To-Do  
 
 ---
