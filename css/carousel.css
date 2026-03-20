@@ -8,7 +8,7 @@
     height: 100%;
     flex: 0 0 40%;
     min-width: 0;
-    overflow: hidden; /* add this */
+    overflow: hidden;
 }
 
 .carousel-group {
@@ -87,6 +87,10 @@
     height: 0.17rem;
     background-color: var(--text);
     border-radius: 1px;
+}
+
+.card-carousel #greeting {
+    color: var(--text);
 }
 
 .span-1 { width: 0.95rem; }

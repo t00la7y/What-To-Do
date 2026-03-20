@@ -1,4 +1,3 @@
-/* ─── Base popup / modal utilities ─────────── */
 .popup-backdrop {
   display: none;
   position: fixed;
@@ -33,7 +32,6 @@
   transform: translate(-50%, -50%);
 }
 
-/* ─── Tag manager popup ─────────────────────── */
 .tag-popup {
   width: min(260px, 90vw);
 }
@@ -101,7 +99,6 @@
   color: var(--text-muted);
 }
 
-/* ─── Create note popup ─────────────────────── */
 .create-popup {
   width: min(480px, 90vw);
   max-height: 90vh;
@@ -175,7 +172,7 @@
   color: var(--text-muted);
   background: var(--bg);
   border: 0.5px solid var(--border);
-  border-radius: 999px;
+  border-radius: 0.5rem;
   padding: 3px 12px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
@@ -217,28 +214,56 @@
   flex-wrap: wrap;
 }
 
+.create-checklist-preview {
+  padding: 0rem 1rem;
+}
+
+.create-checklist-preview li {
+  width: 100%;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-checklist-preview li  {
+  justify-self: end;
+}
+
 .create-tag-input,
 .create-due-input,
 .create-priority-select {
+  width: fit-content;
   border: 0.5px solid var(--border);
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   font-size: var(--font-xs);
-  border-radius: var(--font-xs);
+  border-radius: 0.5rem;
   padding: 3px 10px;
   outline: none;
 }
 
 .create-tag-input {
-  width: 120px;
+  width: 4.5rem;
 }
 
 .create-tags-preview {
+  gap: 2px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+  flex: 1 1 auto;
   align-items: center;
+  font-size: var(--font-xs);
+  font-family: var(--font-body);
+}
+
+.create-tags-preview span {
+  width: fit-content;
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.2rem;
+  background-color: var(--border);
 }
 
 .create-footer {
@@ -254,12 +279,32 @@
   color: var(--bg-light);
   background: var(--text);
   border: none;
-  border-radius: var(--font-xs);
+  border-radius: 0.5rem;
   padding: 0.4rem 1.25rem;
   cursor: pointer;
   transition: opacity 0.2s;
 }
 
 .create-save-btn:hover {
-  opacity: 0.85;
+  color: var(--text);
+  border: 1px solid var(--text);
+  background: var(--gradient-hover);
+}
+
+.create-item-input {
+  width: 100%;
+  padding: 0.3rem 1rem;
+  color:var(--text);
+  border-radius: 0.5rem;
+  border: 0.5px solid var(--bg-dark);
+  background-color: var(--bg-light);
+}
+
+.create-note-body {
+  width: 100%;
+  padding: 0.3rem 1rem;
+  color:var(--text);
+  border-radius: 0.5rem;
+  border: 0.5px solid var(--bg-dark);
+  background-color: var(--bg-light);
 }

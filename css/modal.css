@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Nunito:wght@600;700&display=swap");
-
 :root {
   --bg: hsl(0, 0%, 90%);
   --border: hsl(0, 0%, 70%);
@@ -7,57 +5,47 @@
   --bg-dark: hsl(0, 0%, 80%);
   --bg-light: hsl(0, 0%, 95%);
   --highlight: hsl(0, 0%, 100%);
-  --gradient: linear-gradient(to bottom, hsl(0, 0%, 98%), hsl(0, 0%, 90%));
-  --gradient-hover: linear-gradient(
-    to bottom,
-    hsl(0, 0%, 95%),
-    hsl(0, 0%, 85%)
-  );
+  --gradient: linear-gradient(to bottom, var(--bg-light), var(--bg));
+  --gradient-hover: linear-gradient(to bottom, var(--bg-light), var(--bg-dark));
+  --card-gradient: linear-gradient(135deg, var(--bg), var(--shadows));
+  --card-gradient-hover: linear-gradient(135deg, var(--highlight), var(--shadows));
 
-  /* text */
+
   --text: hsl(0, 0%, 5%);
   --text-muted: hsl(0, 0%, 30%);
 
-  /* font sizes */
   --font-xs: 0.75rem;
   --font-s: 0.875rem;
   --font-m: 1rem;
   --font-l: 1.25rem;
   --font-xl: 1.5rem;
 
-  /* font family */
   --font-body: "Nunito", sans-serif;
   --font-heading: "Roboto", sans-serif;
 }
 
-/* dark mode */
 .dark-mode {
-  /* background */
   --bg: hsl(0, 0%, 15%);
   --border: hsl(0, 0%, 30%);
   --shadows: hsl(0, 0%, 5%);
   --bg-dark: hsl(0, 0%, 10%);
   --bg-light: hsl(0, 0%, 20%);
   --highlight: hsl(0, 0%, 40%);
-  --gradient: linear-gradient(to bottom, hsl(0, 0%, 25%), hsl(0, 0%, 15%));
-  --gradient-hover: linear-gradient(
-    to bottom,
-    hsl(0, 0%, 20%),
-    hsl(0, 0%, 12%)
-  );
+  --gradient: linear-gradient(135deg, var(--bg-light), var(--bg-dark));
+  --gradient-hover: linear-gradient(135deg, var(--highlight), var(--text-muted));
+  --card-gradient: linear-gradient(to bottom, var(--border),var(--shadows));
+  --card-gradient-hover: linear-gradient(to bottom, var(--highlight), var(--shadows));
 
-  /* text */
+
   --text: hsl(0, 0%, 95%);
   --text-muted: hsl(0, 0%, 70%);
 
-  /* font sizes */
   --font-xs: 0.75rem;
   --font-s: 0.875rem;
   --font-m: 1rem;
   --font-l: 1.25rem;
   --font-xl: 1.5rem;
 
-  /* font family */
   --font-body: "Nunito", sans-serif;
   --font-heading: "Roboto", sans-serif;
 }

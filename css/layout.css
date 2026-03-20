@@ -1,4 +1,4 @@
-/* ─── Overall layout ─────────────────────────── */
+@import url(modal.css);
 
 .page {
   display: flex;
@@ -18,22 +18,256 @@
   overflow: hidden;
 }
 
-/* ─── SPA page transitions ───────────────────── */
+
 .home,
 .to-do-Note {
+  display: flex;
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 0.25s ease, transform 0.25s ease;
   pointer-events: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }
 
 .home.active,
 .to-do-Note.active {
   opacity: 1;
+  color: var(--text);
   transform: translateY(0);
   pointer-events: all;
+}
+
+.to-do-Note .view-note-header {
+  width: 100%;
+  display: flex;
+  padding: 0 1rem;
+  flex-direction: column;
+  justify-content: start;
+  gap: 1.5rem;
+}
+
+.to-do-Note .note-options-container {
   position: relative;
+  align-self: end;
+}
+
+.to-do-Note .note-options {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.to-do-Note .note-options-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.to-do-Note .note-options-menu.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.to-do-Note .note-options-menu button {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text);
+  font-size: var(--font-s);
+}
+
+.to-do-Note .note-options-menu button:hover {
+  background: var(--bg-dark);
+}
+
+.to-do-Note .note-options-container .note-options {
+  align-self: end;
+}
+
+.to-do-Note .view-note-header .card-title {
+  font-weight: 900;
+  align-self: start;
+  font-family: var(--font-heading);
+  font-size: calc(var(--font-l) * 2);
+}
+
+.to-do-Note .note-description {
+  font-size: var(--font-m);
+}
+
+.to-do-Note .view-note-body {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.to-do-Note .view-note-body .view-note-about {
+  display: flex;
+  width: 100%;
+  height: 30%;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0.5rem 3rem;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.to-do-Note .view-note-body .view-note-about span {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.to-do-Note .view-note-body .view-note-about span p:first-child {
+  width: 108px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  margin: 0;
+  font-size: var(--font-s);
+}
+
+.to-do-Note .view-note-body .view-note-about span p {
+  margin: 0;
+  font-size: var(--font-s);
+}
+
+.to-do-Note .note-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+.to-do-Note .note-tag {
+  width: 4rem;
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: 0.5rem;
+  /* padding: 2px 10px; */
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.to-do-Note .view-note-body .view-note-detail {
+  height: 80%;
+  width: 100%;
+  margin-top: 2rem;
+  border-top: 0.5px solid var(--bg-dark);
+  padding: 2rem 1rem 1rem 3rem;
+}
+
+.note-check-list {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+ul.note-check-list {
+  list-style: none;
+}
+
+ol.note-check-list {
+  list-style: none;
+  counter-reset: check-counter;
+}
+
+ol.note-check-list .check-item {
+  counter-increment: check-counter;
+}
+
+ol.note-check-list .check-item::before {
+  content: counter(check-counter) ".";
+  font-size: var(--font-s);
+  color: var(--text-muted);
+  min-width: 1.25rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--font-m);
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.check-box {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.check-box.done {
+  background: var(--bg-dark);
+  border-color: var(--shadows);
+}
+
+.check-box.done::after {
+  content: "";
+  display: block;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+  transform: rotate(-45deg) translateY(-1px);
+  position: absolute;
+  top: 4px;
+  left: 2px;
+}
+
+.check-item.done span {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.note-textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  resize: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--font-m);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 0;
+}
+
+.note-textarea::placeholder {
+  color: var(--text-muted);
 }

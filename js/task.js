@@ -1,20 +1,14 @@
-/* ─────────────────────────────────────────────
-   task.js — Task creation + LinkedList storage
-   What-To-Do  |  t00la7y
-   ───────────────────────────────────────────── */
-
-// ─── Task Factory ─────────────────────────────
-
 export class Task {
   constructor({
     title       = "",
-    type        = "ul",        // "ul" | "ol" | "textarea"
+    type        = "ul",
     description = "",
     body        = [],
     tags        = [],
-    priority    = "normal",    // "urgent" | "normal"
+    priority    = "normal",
     dueDate     = "",
-    status      = "not done",  // "not done" | "in progress" | "done"
+    repeat = "none",
+    status      = "not done",
   } = {}) {
     this.id           = crypto.randomUUID();
     this.title        = title;
@@ -27,204 +21,112 @@ export class Task {
     this.dateCreated  = new Date().toLocaleDateString();
     this.dateModified = new Date().toLocaleDateString();
     this.status       = status;
+    this.repeat = repeat ?? "none"; 
   }
 }
 
+const STORAGE_KEY = "notes";
+const notesStore = {};
 
-// ─── Linked List Node ─────────────────────────
-
-class Node {
-  constructor(task) {
-    this.task = task;   // Task object
-    this.next = null;
-  }
+export function loadNotes() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  const data = raw ? JSON.parse(raw) : {};
+  Object.keys(data).forEach((id) => {
+    notesStore[id] = data[id];
+  });
+  processRepeatingNotes();
 }
 
+export function processRepeatingNotes() {
+  const today = new Date().toISOString().split("T")[0];
 
-// ─── Linked List ──────────────────────────────
+  getAllNotes().forEach((note) => {
+    if (!note.repeat || note.repeat === "none") return;
+    if (!note.dueDate) return;
+    if (note.dueDate >= today) return; // not overdue yet, nothing to do
 
-export class TaskList {
-  constructor() {
-    this.head = null;
-    this.size = 0;
-  }
+    // Advance dueDate forward until it's >= today
+    let due = new Date(note.dueDate);
 
-  // ── Add a new task to the end ──────────────
-  append(task) {
-    const node = new Node(task);
-
-    if (!this.head) {
-      this.head = node;
-    } else {
-      let current = this.head;
-      while (current.next) current = current.next;
-      current.next = node;
+    while (due.toISOString().split("T")[0] < today) {
+      if (note.repeat === "Daily") due.setDate(due.getDate() + 1);
+      else if (note.repeat === "Weekly") due.setDate(due.getDate() + 7);
+      else if (note.repeat === "Monthly") due.setMonth(due.getMonth() + 1);
     }
 
-    this.size++;
-    return task.id;  // return the unique id for quick reference
-  }
-
-  // ── Find a task by id — O(n) ───────────────
-  findById(id) {
-    let current = this.head;
-    while (current) {
-      if (current.task.id === id) return current.task;
-      current = current.next;
-    }
-    return null;
-  }
-
-  // ── Update a task by id ────────────────────
-  updateById(id, changes = {}) {
-    let current = this.head;
-    while (current) {
-      if (current.task.id === id) {
-        Object.assign(current.task, changes, {
-          dateModified: new Date().toLocaleDateString(),
-        });
-        return current.task;
-      }
-      current = current.next;
-    }
-    return null;
-  }
-
-  // ── Delete a task by id ────────────────────
-  deleteById(id) {
-    if (!this.head) return false;
-
-    // Head is the target
-    if (this.head.task.id === id) {
-      this.head = this.head.next;
-      this.size--;
-      return true;
-    }
-
-    let current = this.head;
-    while (current.next) {
-      if (current.next.task.id === id) {
-        current.next = current.next.next;
-        this.size--;
-        return true;
-      }
-      current = current.next;
-    }
-
-    return false;
-  }
-
-  // ── Return all tasks as a plain array ──────
-  toArray() {
-    const result = [];
-    let current = this.head;
-    while (current) {
-      result.push(current.task);
-      current = current.next;
-    }
-    return result;
-  }
-
-  // ── Filter tasks (returns plain array) ─────
-  filter(predicate) {
-    return this.toArray().filter(predicate);
-  }
-
-  // ── Sort tasks (returns plain array) ───────
-  sort(compareFn) {
-    return this.toArray().sort(compareFn);
-  }
-
-  // ── Convenience: urgent tasks ──────────────
-  getUrgent() {
-    return this.filter((t) => t.priority === "urgent");
-  }
-
-  // ── Convenience: sort by due date ──────────
-  getDueSoon() {
-    return this.filter((t) => t.dueDate)
-               .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
-  }
-
-  // ── Tasks due on a specific date ───────────
-  // dateStr format: "YYYY-MM-DD"
-  getByDate(dateStr) {
-    return this.filter((t) => t.dueDate === dateStr);
-  }
-
-  // ── Tasks due OR created on a specific date ─
-  getByDateAll(dateStr) {
-    const target = new Date(dateStr).toLocaleDateString();
-    return this.filter(
-      (t) => t.dueDate === dateStr || t.dateCreated === target
-    );
-  }
-
-  // ── Persist list to localStorage ──────────
-  save() {
-    const data = this.toArray().reduce((map, task) => {
-      map[task.id] = task;
-      return map;
-    }, {});
-    localStorage.setItem("tasks", JSON.stringify(data));
-  }
-
-  // ── Rebuild list from localStorage ─────────
-  load() {
-    const raw = localStorage.getItem("tasks");
-    if (!raw) return;
-
-    const data = JSON.parse(raw);
-    Object.values(data).forEach((taskData) => {
-      const node = new Node(taskData);  // restore plain object (no new id)
-      if (!this.head) {
-        this.head = node;
-      } else {
-        let current = this.head;
-        while (current.next) current = current.next;
-        current.next = node;
-      }
-      this.size++;
+    updateNote(note.id, {
+      dueDate: due.toISOString().split("T")[0],
+      status: "not done",
+      body: note.body.map((item) => ({ ...item, done: false })), // reset checklist
     });
-  }
+  });
 }
 
+export function saveNotes() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(notesStore));
+}
 
-// ─── Singleton list (shared across modules) ───
+export function getAllNotes() {
+  return Object.values(notesStore);
+}
 
-export const taskList = new TaskList();
+export function getNoteById(id) {
+  return notesStore[id] ?? null;
+}
 
+export function addNote(note) {
+  notesStore[note.id] = note;
+  saveNotes();
+  return note;
+}
 
-/* ─── Usage example ───────────────────────────
+export function deleteNote(id) {
+  if (!notesStore[id]) return false;
+  delete notesStore[id];
+  saveNotes();
+  return true;
+}
 
-import { Task, taskList } from "./task.js";
+export function updateNote(id, changes = {}) {
+  if (!notesStore[id]) return null;
 
-// Create and append a task
-const task = new Task({
-  title:       "Build the JS layer",
-  type:        "ul",
-  description: "Wire up all localStorage helpers",
-  body:        ["getNotes", "saveNote", "deleteNote"],
-  tags:        ["dev", "phase-3"],
-  priority:    "urgent",
-  dueDate:     "2026-03-20",
-});
+  notesStore[id] = {
+    ...notesStore[id],
+    ...changes,
+    dateModified: new Date().toLocaleDateString(),
+    status: computeStatus(changes.body ?? notesStore[id].body),
+  };
 
-taskList.append(task);          // appends; returns task.id
-taskList.save();                // persists to localStorage
+  saveNotes();
+  return notesStore[id];
+}
 
-// On page load
-taskList.load();                // rebuilds list from localStorage
+export function computeStatus(body) {
+  if (!Array.isArray(body) || body.length === 0) return "not done";
+  const done = body.filter((item) => item.done).length;
+  if (done === body.length) return "done";
+  if (done > 0) return "in progress";
+  return "not done";
+}
 
-// Query
-taskList.findById(task.id);     // → Task object
-taskList.getUrgent();           // → Task[]
-taskList.getDueSoon();          // → Task[]
+export function getUrgent() {
+  return getAllNotes().filter((t) => t.priority === "urgent");
+}
 
-// Update
-taskList.updateById(task.id, { status: "in progress" });
+export function getDueSoon() {
+  return getAllNotes()
+    .filter((t) => t.dueDate)
+    .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+}
 
-// Delete
-taskList.deleteById(task.id);
+export function getByDate(dateStr) {
+  return getAllNotes().filter((t) => t.dueDate === dateStr);
+}
 
-─────────────────────────────────────────────── */
+export function getByDateAll(dateStr) {
+  const target = new Date(dateStr).toLocaleDateString();
+  return getAllNotes().filter(
+    (t) => t.dueDate === dateStr || t.dateCreated === target
+  );
+}
+

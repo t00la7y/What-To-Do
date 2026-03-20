@@ -1,10 +1,3 @@
-/* ─── Desktop nav ────────────────────────────── */
-/*
-  Three states:
-  Full  (>= 900px)  : 16rem wide, labels visible
-  Mini  (600-899px) : 4rem wide, icons only
-  Gone  (< 600px)   : hidden, mobile nav takes over
-*/
 
 .desktop-nav {
   display: flex;
@@ -28,7 +21,7 @@
   display: none;
 }
 
-/* ─── Account block ──────────────────────────── */
+
 .desktop-nav .account-action {
   display: flex;
   align-items: center;
@@ -76,7 +69,7 @@
   background-color: var(--bg);
 }
 
-/* ─── Nav links ──────────────────────────────── */
+
 .desktop-nav nav {
   list-style: none;
   display: flex;
@@ -144,7 +137,7 @@
   min-height: 0;
 }
 
-/* ─── Footer ─────────────────────────────────── */
+
 .desktop-nav footer {
   display: flex;
   flex-direction: column;
@@ -157,16 +150,21 @@
   white-space: nowrap;
 }
 
-/* ─── Labels — hidden in mini mode ──────────── */
+
 .nav-label {
   transition: opacity 0.2s ease;
+}
+
+
+.theme-toggle {
+  color: var(--text);
 }
 
 .mobile-nav {
     display: none;
 }
 
-/* ─── Responsive nav ─────────────────────────── */
+
 @media (max-width: 899px) {
   .desktop-nav {
     width: 4rem;
@@ -180,7 +178,6 @@
     justify-content: center;
   }
 
-  /* hide name and dropdown arrow in mini mode */
   .desktop-nav .account-action .nav-label,
   .desktop-nav .account-action .nav-label-show {
     display: none;
@@ -192,22 +189,18 @@
     gap: 0;
   }
 
-  /* hide all text labels */
   .nav-item .nav-label {
     display: none;
   }
 
-  /* hide tags filter btn in mini mode */
   .nav-tags .nav-label-show {
     display: none;
   }
 
-  /* hide calendar block entirely in mini mode */
   .nav-calendar-block {
     display: none;
   }
 
-  /* hide footer text */
   .desktop-nav footer .nav-label {
     display: none;
   }

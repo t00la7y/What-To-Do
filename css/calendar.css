@@ -1,60 +1,84 @@
 /* Calendar Container */
 .calendar-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .calendar-container #month {
-    font-weight: 900;
-    font-size: var(--font-m);
-    align-self: start;
+  font-weight: 900;
+  font-size: var(--font-m);
+  align-self: start;
 }
 
 .calendar-container span {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .calendar-label {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    gap: 0.175rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 0.175rem;
 }
 
 /* Table styling */
 .calendar-table {
-    margin-top: 0.35rem;
-    padding-top: var(--font-s);
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-    font-size: var(--font-s);
+  margin-top: 0.35rem;
+  padding-top: var(--font-s);
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: var(--font-s);
 }
 
 .calendar-table th,
 .calendar-table td {
-    border: 1px solid var(--bg-dark);
-    padding: 0.45rem;
-    height: 1rem;
+  border: 1px solid var(--bg-dark);
+  padding: 0.45rem;
+  height: 1rem;
 }
 
 .calendar-table th {
-    background-color: var(--bg);
-    color: var(--text);
-    font-weight: 600;
+  background-color: var(--bg);
+  color: var(--text);
+  font-weight: 600;
 }
 
 .calendar-table td {
-    background-color: var(--bg-light);
-    color: var(--text);
+  background-color: var(--bg-light);
+  color: var(--text);
 }
 
 /* Hover effect for interactivity */
 .calendar-table td:hover {
-    background-color: var(--bg-dark);
-    cursor: pointer;
+  background-color: var(--bg-dark);
+  cursor: pointer;
+}
+
+.cal-today {
+  background-color: var(--bg-dark);
+  font-weight: 700;
+}
+
+.cal-selected {
+  background-color: var(--text);
+  color: var(--bg-light);
+}
+
+.cal-has-task::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  margin: 2px auto 0;
+}
+
+.cal-selected.cal-has-task::after {
+  background: var(--bg-light);
 }
